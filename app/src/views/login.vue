@@ -1,19 +1,22 @@
 <template>
   <div>
+    <Particles
+      id="tsparticles"
+      :particlesInit="particlesInit"
+      :particlesLoaded="particlesLoaded"
+      :options="options"
+    />
     <div id="navbar" class="fb fb-fd-r fb-jc-sb fb-ai-c shadow white">
       <div class="fb fb-fd-r fb-jc-fs fb-ai-c">
         <router-link to="/login" class="fb fb-fd-r fb-ai-c">
           <img src="../assets/logo2.png" alt="Logo" />
-
         </router-link>
       </div>
-      
     </div>
     <div class="back fb fb-fd-c fb-ai-fs fb-jc-c">
       <h1>Admin Login</h1>
     </div>
     <form @submit.prevent="signIn">
-
       <div>
         <label for="email">Email</label>
         <input
@@ -24,7 +27,7 @@
           required
         />
       </div>
-            <div>
+      <div>
         <label for="password">Passwort</label>
         <input
           v-model="loginObj.password"
@@ -40,32 +43,86 @@
 </template>
 
 <script>
-
 export default {
   name: "login",
   data() {
     return {
-      loginObj:{
-        email: '',
-        password: '',
-      }
+      loginObj: {
+        email: "",
+        password: "",
+      },
+      options: {
+        background: {
+          color: "#000",
+        },
+        detectRetina: false,
+        fpsLimit: 30,
+        interactivity: {
+          detectsOn: "canvas",
+          events: {
+            resize: true,
+          },
+        },
+        particles: {
+          color: {
+            value: "#fff",
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 1080,
+            },
+            limit: 0,
+            value: 400,
+          },
+          opacity: {
+            animation: {
+              enable: true,
+              minimumValue: 0.05,
+              speed: 1,
+              sync: false,
+            },
+            random: {
+              enable: true,
+              minimumValue: 0.05,
+            },
+            value: 1,
+          },
+          move: {
+        enable: true,
+        speed: 0.05,
+        direction: "up",
+        out_mode: "out"
+      },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            random: {
+              enable: true,
+              minimumValue: 0.5,
+            },
+            value: 1,
+          },
+        },
+      },
     };
   },
-  computed:{
-    user(){
-      return this.$store.getters.getUser
-    }
+  computed: {
+    user() {
+      return this.$store.getters.getUser;
+    },
   },
-  watch:{
-    user (value){
-      if(value != undefined && value != null){
-        this.$router.push('/dashboard')
+  watch: {
+    user(value) {
+      if (value != undefined && value != null) {
+        this.$router.push("/dashboard");
       }
-    }
+    },
   },
   methods: {
     async signIn() {
-      this.$store.dispatch('signIn',this.loginObj)
+      this.$store.dispatch("signIn", this.loginObj);
     },
   },
 };
