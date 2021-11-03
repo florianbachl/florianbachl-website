@@ -204,16 +204,6 @@ img {
   border-radius: 50%;
 }
 
-.sb {
-  padding-right: 13px;
-  font-size: 15px;
-}
-
-.pb {
-  padding-right: 15px;
-  font-size: 15px;
-}
-
 .mainpage-button {
   margin-top: 20px;
   margin-left: 0px;
@@ -228,16 +218,5 @@ img {
 body {
   margin: 0;
   background-color: #17182f;
-}
-
-canvas {
-  display: block;
-  vertical-align: bottom;
-}
-
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 </style>
