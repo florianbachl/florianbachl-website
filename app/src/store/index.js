@@ -25,11 +25,19 @@ export const store = createStore({
       isPopupActive: false,
       submitting: false,
       isLoading: false,
+      whitelogobool: false,
+      isexpanded: false
     };
   },
   mutations: {
     submit(state){
       state.submitting = true
+    },
+    setExpanded(state,payload){
+      state.isexpanded = payload
+    },
+    setLogoWhite(state,payload){
+      state.whitelogobool = payload
     },
     setLoading(state,payload){
       state.isLoading = payload
@@ -74,6 +82,12 @@ export const store = createStore({
     getUser(state) {
       return state.user;
     },
+    isLogoWhite(state) {
+      return state.whitelogobool;
+    },
+    isExpanded(state){
+      return state.isexpanded;
+    },
     isLoading(state){
       return state.isLoading
     },
@@ -105,6 +119,12 @@ export const store = createStore({
     },
     async setPopup(context, payload){
       await context.commit('setPopup', payload);
+    },
+    async setLogoWhite(context, payload){
+      await context.commit('setLogoWhite', payload);
+    },
+    async setExpanded(context, payload){
+      await context.commit('setExpanded', payload);
     },
     async resetPopup(context){
       await context.commit('resetPopup');

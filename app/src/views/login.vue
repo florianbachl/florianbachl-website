@@ -1,17 +1,8 @@
 <template>
-  <div>
-    <div id="navbar" class="fb fb-fd-r fb-jc-sb fb-ai-c shadow white">
-      <div class="fb fb-fd-r fb-jc-fs fb-ai-c">
-        <router-link to="/login" class="fb fb-fd-r fb-ai-c">
-          <img src="../assets/logos/logo2.png" alt="Logo" />
-        </router-link>
-      </div>
-    </div>
-    <div class="back fb fb-fd-c fb-ai-fs fb-jc-c">
-      <h1>Admin Login</h1>
-    </div>
-    <form @submit.prevent="signIn">
-      <div>
+  <div id="login" class="fb fb-fd-c fb-ai-c fb-jc-c">
+    <h1>Admin Login</h1>
+    <form @submit.prevent="signIn" class="fb fb-fd-c fb-ai-s fb-jc-c">
+
         <label for="email">Email</label>
         <input
           v-model="loginObj.email"
@@ -20,8 +11,8 @@
           name="email"
           required
         />
-      </div>
-      <div>
+
+ 
         <label for="password">Passwort</label>
         <input
           v-model="loginObj.password"
@@ -30,7 +21,7 @@
           name="password"
           required
         />
-      </div>
+     
       <button type="submit">Anmelden</button>
     </form>
   </div>
@@ -66,8 +57,10 @@ export default {
   },
 };
 </script>
-<style >
-
+<style scoped>
+#login{
+  height: 100vh;
+}
 .mainpage-button {
   margin-top: 20px;
   margin-left: 0px;
@@ -77,5 +70,17 @@ export default {
 
 .mainpage-button p {
   font-size: 17px;
+}
+input{
+    width: calc( 100% - 20px);
+    background: none;
+    border: none ;
+    border-bottom: 2px solid black;
+    caret-color: white;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 20px;
+    padding: 0px 10px;
+
 }
 </style>

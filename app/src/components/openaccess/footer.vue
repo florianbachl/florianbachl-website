@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <div id="bottom-cta">
+    <div id="bottom-cta"  v-if="$route.name != 'quiz'">
       <div class="margin-0 white-t fb fb-fd-c fb-jc-c fb-ai-c">
         <h2>Nicht sicher, wonach du suchst?</h2>
         <p>
@@ -8,36 +8,36 @@
           um ein Problem zu lösen. Unser Quiz hilft dir mit kurzen Fragen, dein
           Anliegen auf den Punkt zu bringen.
         </p>
-        <button class="sb button-with-icon button-with-icon-and-line">
+         <a :href="'/quiz'"><button class="sb button-with-icon button-with-icon-and-line">
           Quiz starten
           <span class="material-icons">arrow_right_alt</span>
-        </button>
+        </button></a>
       </div>
     </div>
     <div id="bottom-links" class="darkblue">
       <div class="fb fb-fd-r fb-ai-fs fb-jc-sb margin-0-small white-t">
         <div class="bottom-container">
           <h4><span class="fat">Sitemap</span></h4>
-          <p class="clickable">Startseite</p>
-          <p class="clickable">About</p>
-          <p class="clickable">Projekte</p>
-          <p class="clickable">Kontakt</p>
+          <a :href="'/landing1'"><p class="clickable">Startseite</p></a>
+          <a :href="'/about'"><p class="clickable">About</p></a>
+          <a :href="'/projects'"><p class="clickable">Projekte</p></a>
+          <a :href="'/contact'"><p class="clickable">Kontakt</p></a>
         </div>
         <div class="bottom-container">
           <h4><span class="fat">Kontakt</span></h4>
           <span class="fb fb-fd-r fb-ai-c fb-jc-fs">
             <span class="material-icons material-icons-small">email</span>
-            <p>hello@florianbachl.at</p>
-          </span>
+            <a href="mailto:hello@florianbachl.at"><p>hello@florianbachl.at</p></a>          
+            </span>
           <span class="fb fb-fd-r fb-ai-c fb-jc-fs">
             <span class="material-icons material-icons-small">phone</span>
             <p>+43-650-677-9393</p>
           </span>
           <span class="fb fb-fd-r fb-jc-fs fb-ai-c">
-            <div class="social-icon grey1 clickable" id="twitter"></div>
-            <div class="social-icon grey1 clickable" id="instagram"></div>
-            <div class="social-icon grey1 clickable" id="facebook"></div>
-            <div class="social-icon grey1 clickable" id="linkedin"></div>
+            <a href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/" target="_blank"><div class="social-icon grey1 clickable" id="twitter"></div></a> 
+            <a href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/" target="_blank"><div class="social-icon grey1 clickable" id="instagram"></div></a> 
+            <a href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/" target="_blank"><div class="social-icon grey1 clickable" id="facebook"></div></a> 
+            <a href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/" target="_blank"><div class="social-icon grey1 clickable" id="linkedin"></div></a> 
           </span>
         </div>
 
@@ -54,9 +54,9 @@
       </div>
       <div id="bottom-legal" class="white-t">
         <div class="fb fb-fd-r fb-jc-c fb-ai-c" id="legal">
-            <span class="clickable">Impressum</span>
+             <a :href="'/legal'"><span class="clickable">Impressum</span></a>
             <div id="bottom-spacer"></div>
-            <span class="clickable">Datenschutzerklärung</span>
+            <a :href="'/dataprotection'"><span class="clickable">Datenschutzerklärung</span></a>
         </div>
         <p>
           © 2021 <span class="fat">Florian Bachl</span> Alle Rechte vorbehalten
@@ -77,7 +77,7 @@ export default {
   methods: {},
 };
 </script>
-<style >
+<style scoped>
 #bottom-cta {
   background: linear-gradient(0.13turn,#185cbc 0%, #340a94 100%);
   padding: 30px;
@@ -162,5 +162,9 @@ export default {
 #legal{
     padding-top: 25px;
     padding-bottom: 30px;
+}
+
+a{
+  color: white
 }
 </style>

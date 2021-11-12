@@ -1,7 +1,6 @@
 <template>
   <div id="landing1">
     <div id="main-bg">
-      <img src="@/assets/logos/logo_white.svg" alt="logo" class="logo" id="landing-logo"/>
       <div id="banner-content" class="fb fb-fd-r fb-ai-c fb-jc-sb">
         <div class="side">
           <h1 class="white-t">
@@ -97,7 +96,7 @@
           >
             arrow_back_ios
           </span>
-          <img src="@/assets/logos/logo.png" alt="profilepic" id="ratingimg" />
+          <img :src="require('@/assets/customers/'+ratings[ratingindex].img)" alt="profilepic" id="ratingimg" />
           <div id="rating">
             <h3>{{ ratings[ratingindex].text }}</h3>
             <h3>{{ ratings[ratingindex].customer }}</h3>
@@ -128,7 +127,7 @@
         height="67"
       />
       <div class="banner-inner margin-0" id="mysection">
-        <img src="@/assets/logos/logo.png" alt="profilepic" id="myimg" />
+        <img src="@/assets/team/me.jpg" alt="profilepic" id="myimg" />
         <h2>Hey, ich bin Florian!</h2>
         <h3>Ich löse Probleme mit Softwareentwicklung</h3>
         <p>
@@ -156,16 +155,21 @@ export default {
           customer: "Brigitte Bachl",
           position: "Geschäftsführerin Bachl Nachhilfe",
           text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+          img: "bachl.png"
         },
         {
           customer: "Brigitte Berchl",
           position: "Geschäftsführerin Bachl Nachhilfe",
           text: "Lorem ipsum dolor sit amet, conseafr htjzfkghfjd hgsftetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+          img: "bachl.png"
         },
       ],
     };
   },
   computed: {},
+  created(){
+    this.$store.dispatch('setLogoWhite', true)
+  },
   watch: {},
   methods: {
     setActive(index) {
@@ -309,8 +313,8 @@ export default {
 }
 
 #mysection {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin-top: 130px;
+  margin-bottom: 130px;
 }
 
 #mysection h3 {

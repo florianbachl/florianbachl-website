@@ -207,6 +207,9 @@ export default {
       },
     };
   },
+  created(){
+    this.$store.dispatch('setLogoWhite', true)
+  },
   methods: {
     setAnswer(index, question) {
             question.answerchosen = index;
@@ -252,7 +255,7 @@ export default {
   },
 };
 </script>
-<style >
+<style scoped>
 #quiz {
 }
 #tsparticles {

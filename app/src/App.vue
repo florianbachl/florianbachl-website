@@ -1,6 +1,8 @@
 <template>
 <span>
+  <Nav></Nav>
     <router-view
+    @click="setExpanded"
         />
         <Footer></Footer>
         </span>
@@ -8,11 +10,18 @@
 
 <script>
 import Footer from './components/openaccess/footer'
+import Nav from './components/openaccess/nav'
 export default {
   name: 'App',
   components:{
-    Footer
-  }
+    Footer,
+    Nav
+  },
+  methods: {
+    setExpanded(){
+      this.$store.dispatch('setExpanded', false)
+    }
+  },
 }
 </script>
 
@@ -82,6 +91,11 @@ p{
 .fb-ai-fs{
   align-items: flex-start;
 }
+
+.fb-ai-s{
+  align-items: stretch;
+}
+
 
 .fb-ai-fe{
   align-items: flex-end;
@@ -235,7 +249,7 @@ button .material-icons{
 
 .logo {
   padding: 60px;
-  width: 150px;
+  width: 130px;
   height: auto;
 }
 </style>

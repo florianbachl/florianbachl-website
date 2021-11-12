@@ -1,7 +1,6 @@
 <template>
   <div id="projects" class="margin-0-small">
     <div id="project-header">
-      <img src="@/assets/logos/logo_color.svg" alt="logo" class="logo" />
       <h1>Wilkommen im <span class="fat">Projekt-Portfolio</span></h1>
       <h3>
         Professionelle <span class="fat">Applikationen</span> und
@@ -65,6 +64,9 @@ export default {
       ],
     };
   },
+    created(){
+    this.$store.dispatch('setLogoWhite', false)
+  },
   computed: {},
   watch: {},
   methods: {
@@ -74,9 +76,10 @@ export default {
   },
 };
 </script>
-<style >
+<style scoped>
 #project-header {
   text-align: center;
+  padding-top: 17em;
 }
 
 #projects h1 {
