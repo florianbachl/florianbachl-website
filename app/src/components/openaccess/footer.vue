@@ -79,7 +79,7 @@ export default {
 </script>
 <style scoped>
 #bottom-cta {
-  background: linear-gradient(0.13turn,#185cbc 0%, #340a94 100%);
+  background: linear-gradient(0.13turn,#01CFDC 0%, #340a94 100%);
   padding: 30px;
   text-align: center;
 }
@@ -108,34 +108,8 @@ export default {
   margin-top: 3px;
 }
 
-.social-icon {
-  padding: 15px;
-  border-radius: 50%;
-  margin-top: 15px;
-  margin-right: 15px;
-  background-repeat: no-repeat;
-  background-size: 60% auto;
-  background-position: center center;
-}
-
 #bottom-links{
     padding-bottom: 20px;
-}
-
-#twitter {
-  background-image: url("../../assets/logos/twitter.png");
-}
-
-#facebook {
-  background-image: url("../../assets/logos/facebook.png");
-}
-
-#linkedin {
-  background-image: url("../../assets/logos/linkedin.png");
-}
-
-#instagram {
-  background-image: url("../../assets/logos/instagram.png");
 }
 
 #logo-bottom {

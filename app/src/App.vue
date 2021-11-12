@@ -69,7 +69,7 @@ h4{
 }
 
 p{
-  font-size: 15px;
+  font-size: 1em;
 }
 
 .fb{
@@ -169,7 +169,32 @@ a{
 .darkblue-t{
   color: #02060E;
 }
+.social-icon {
+  padding: 15px;
+  border-radius: 50%;
+  margin-top: 15px;
+  margin-right: 15px;
+  background-repeat: no-repeat;
+  background-size: 60% auto;
+  background-position: center center;
+}
 
+
+#twitter {
+  background-image: url("assets/logos/twitter.png");
+}
+
+#facebook {
+  background-image: url("assets/logos/facebook.png");
+}
+
+#linkedin {
+  background-image: url("assets/logos/linkedin.png");
+}
+
+#instagram {
+  background-image: url("assets/logos/instagram.png");
+}
 .margin-20{
   margin: 20px;
 }
@@ -227,7 +252,7 @@ button .material-icons{
 }
 
 .pb {
-  background: linear-gradient(to right, #340a94 0%, #185cbc 100%)
+  background: linear-gradient(to right, #340a94 0%, #01CFDC 100%)
 
 }
 

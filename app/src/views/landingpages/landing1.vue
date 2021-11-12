@@ -1,5 +1,5 @@
 <template>
-  <div id="landing1">
+  <div id="landing1" class="grey1">
     <div id="main-bg">
       <div id="banner-content" class="fb fb-fd-r fb-ai-c fb-jc-sb">
         <div class="side">
@@ -9,11 +9,10 @@
           </h1>
           <h3 class="white-t">
             <span class="fat">Professionelle Applikationen</span> und Webdesign
-            <br />für die Zukunft
+          für die Zukunft
           </h3>
-          <button class="sb button-with-icon button-with-icon-and-line">
+          <button class="sb ">
             Jetzt Kontaktieren
-            <span class="material-icons">arrow_right_alt</span>
           </button>
         </div>
         <div class="side">Grafik</div>
@@ -21,14 +20,14 @@
     </div>
     <div id="content-landing">
       <img
-        src="@/assets/backgrounds/b1t.png"
+        src="@/assets/backgrounds/t1.png"
         alt="UpperBanner"
         class="bannerimg"
         id="upper-banner-top"
         width="1921"
         height="95"
       />
-      <div id="service-banner" class="banner-inner grey2">
+      <div id="service-banner" class="banner-inner white">
         <h2>Services auf einen Blick</h2>
         <div class="fb fb-fd-r fb-jc-c fb-ai-c margin-0">
           <div class="service-container">
@@ -46,7 +45,7 @@
         </div>
       </div>
       <img
-        src="@/assets/backgrounds/b1b.png"
+        src="@/assets/backgrounds/b1.png"
         alt="UpperBanner"
         class="bannerimg"
         width="1921"
@@ -80,14 +79,14 @@
         <div class="side">Grafik</div>
       </div>
       <img
-        src="@/assets/backgrounds/b2t.png"
+        src="@/assets/backgrounds/t2.png"
         alt="UpperBanner"
         class="bannerimg"
         id="lower-banner-top"
         width="1921"
         height="84"
       />
-      <div class="banner-inner grey2">
+      <div class="banner-inner white">
         <h2>Das sagen andere Kunden</h2>
         <span class="fb fb-fd-r fb-ai-c fb-jc-c margin-0" id="customer-slider">
           <span
@@ -120,7 +119,7 @@
         </div>
       </div>
       <img
-        src="@/assets/backgrounds/b2b.png"
+        src="@/assets/backgrounds/b2.png"
         alt="UpperBanner"
         class="bannerimg"
         width="1921"
@@ -198,7 +197,7 @@ export default {
   padding-bottom: 20px;
 }
 #main-bg {
-  background: linear-gradient(0.13turn, #340a94 0%, #185cbc 100%);
+  background: linear-gradient(0.13turn, #340a94 0%, #01CFDC 100%);
   width: 100%;
   height: calc(100vh + 100px);
   z-index: -20;
@@ -330,6 +329,27 @@ export default {
   position: absolute;
   left: calc( 50% - 135px) ;
   right:calc( 50% - 135px) ;
+}
+@media screen and (max-width:720px) {
+
+}
+
+@media screen and (max-width:450px) {
+  .fb-fd-r{
+    flex-direction: column;
+  }
+  #main-bg .fb-fd-r{
+    flex-direction: column-reverse;
+  }
+
+  #main-bg{
+    height: 100vh;
+    text-align: center;
+  }
+  .side{
+    padding: 20px;
+    width: calc( 100% - 40px);
+  }
 }
 
 </style>

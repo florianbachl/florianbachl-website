@@ -98,7 +98,7 @@ export default {
 }
 
 .hamburger-gradient {
-  background: -webkit-linear-gradient(0.13turn, #340a94 0%, #185cbc 100%);
+  background: -webkit-linear-gradient(0.13turn, #340a94 0%, #01CFDC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
