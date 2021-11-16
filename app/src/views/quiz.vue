@@ -7,67 +7,104 @@
       :options="options"
     />
     <div id="foreground">
-      <div id="content" class="fb fb-fd-c fb-jc-sb">
-        <div></div>
-        <div class="fb fb-fd-r fb-ai-c fb-jc-sb" v-if="!introslide">
-          <div class="width-60">
+      <div id="content" class="fb fb-fd-c fb-jc-c">
+        <div class="fb fb-fd-r fb-ai-c fb-jc-sb" id="question-mobile" v-if="!introslide">
+          <div class="width-50">
             <span id="question-indicator">
               Frage 0{{ questionsindex + 1 }} / 0{{ questions.length }}
             </span>
-            <h2>{{ questions[questionsindex].question }}</h2>
-            <div id="quiz-buttons">
-              <span v-if="questions[questionsindex].input" class=" fb fb-fd-r fb-jc-c fb-ai-fs">
+            <h2 class="fat">{{ questions[questionsindex].question }}</h2>
+            <div id="quiz-buttons" >
+              <span
+                v-if="questions[questionsindex].input"
+                class="fb fb-fd-r fb-jc-c fb-ai-fs"
+              >
                 <input
                   type="number"
                   @input="checkvalidity()"
                   class=""
                   v-model="questions[questionsindex].text"
                 /><span id="currency">€</span>
+                
               </span>
+              <div id="vertical-line"  v-if="questions[questionsindex].input"></div>
               <div v-if="questions[questionsindex].textarea" class="area">
                 <textarea
                   id="scrollbar"
                   @input="checkvalidity()"
-                  
                   v-model="questions[questionsindex].text"
                 />
               </div>
+              
+              <div v-if="questions[questionsindex].input || questions[questionsindex].textarea || questions[questionsindex].text">
+                <div class="fb fb-fd-r fb-jc-sb fb-ai-c" id="button-line">
+                  <button
+                    
+                    class= "sb button-with-icon button-with-icon-and-line"
+                    id="just-icon"
+                    @click="previous()"
+                  >
+                    <span  class="material-icons">chevron_left</span>
+                  </button>
+                  
+                  <button
+                    @click="next()"
+                    :disabled="!proceed"
+                    :class="{ pb: proceed }"
+                  >
+                    Weiter
+              
+                  </button>
+                </div>
+              </div>
+              <button
+                    v-if="questions[questionsindex].answers"
+                    class= "sb button-with-icon button-with-icon-and-line f-l"
+                    id="just-icon"
+                    @click="previous()"
+                  >
+                    <span  class="material-icons">chevron_left</span>
+              </button>
               <span
                 v-for="(answer, index) in questions[questionsindex].answers"
                 :key="answer"
+                class="f-l"
               >
-              <div class="surrounding-topdown" :class="[
-                      answer.dropdown ? 'dropdown':''
-                  ]">
-                <button
-                  @click="setAnswer(index, questions[questionsindex])"
-                  :class="[
-                    questions[questionsindex].answerchosen == index
-                      ? 'pb'
-                      : 'sb',
-                  ]"
+                <div
+                  class="surrounding-topdown"
+                  
                 >
-                  {{ answer.answer }}
-                </button>
-                <input
-                  type="text"
-                  v-if="questions[questionsindex].answerchosen == index && 
-                  questions[questionsindex].answerchosen == 2"
-                  @input="checkvalidity()"
-                   class="inputfordropdown"
-                  v-model="questions[questionsindex].text"
-                />
+                  <button
+                    @click="setAnswer(index, questions[questionsindex])"
+                    :class="[
+                      questions[questionsindex].answerchosen == index
+                        ? 'pb'
+                        : 'sb',
+                    ]"
+                  >
+                    {{ answer.answer }}
+                  </button>
+                  
                 </div>
               </span>
             </div>
           </div>
-          <div class="width-40"></div>
+
+            <Rocketsvg></Rocketsvg>
+         
         </div>
         <div v-else>
           <h2>Willkommen!</h2>
           <p>dfhjrhdsgdgnf rdfhfg dfhrjfggsdf</p>
+          <button
+            class="pb button-with-icon"
+            @click="next()"
+          >
+            Weiter
+            <span class="material-icons">arrow_right_alt</span>
+          </button>
         </div>
-        <div class="fb fb-fd-r fb-jc-sb fb-ai-c">
+        <!--<div class="fb fb-fd-r fb-jc-sb fb-ai-c">
           <p @click="previous()" v-if="!introslide" class="clickable">Zurück</p>
           <button
             class="button-with-icon"
@@ -79,6 +116,7 @@
             <span class="material-icons">arrow_right_alt</span>
           </button>
         </div>
+        -->
       </div>
       <!--<button> Hello</button>
         <button class="pb"> Hello</button>
@@ -94,8 +132,13 @@
 </template>
 
 <script>
+import Rocketsvg from "../components/svgs/rocketsvg";
+
 export default {
   name: "quiz",
+  components:{
+    Rocketsvg
+  },
   data() {
     return {
       questionsindex: 0,
@@ -105,9 +148,9 @@ export default {
         {
           question: "Was möchtest du umsetzen?",
           answers: [
-            { answer: "Website", dropdown: false },
-            { answer: "Webapp oder Desktopapp", dropdown: false },
-            { answer: "andere", dropdown: true },
+            { answer: "Website",  },
+            { answer: "Webapp oder Desktopapp",  },
+            { answer: "andere",  },
           ],
           answerchosen: null,
           illustrationlink: null,
@@ -117,10 +160,9 @@ export default {
           answers: [
             {
               answer: "Kosten oder Zeit im Unternehmen sparen",
-              dropdown: false,
+             
             },
-            { answer: "Neue Kunden gewinnen", dropdown: false },
-            { answer: "andere", dropdown: true },
+            { answer: "Neue Kunden gewinnen",},
           ],
           answerchosen: null,
           illustrationlink: null,
@@ -207,13 +249,14 @@ export default {
       },
     };
   },
-  created(){
-    this.$store.dispatch('setLogoWhite', true)
+  created() {
+    this.$store.dispatch("setLogoWhite", true);
   },
   methods: {
     setAnswer(index, question) {
-            question.answerchosen = index;
-            this.proceed = true;
+      question.answerchosen = index;
+      this.proceed = true;
+      this.next();
     },
     checkvalidity() {
       if (
@@ -231,10 +274,12 @@ export default {
       } else {
         this.introslide = true;
       }
-      if (this.questions[this.questionsindex].text != null &&
-        this.questions[this.questionsindex].text != "" || 
-        this.questions[this.questionsindex].answerchosen != null && 
-        this.questions[this.questionsindex].answerchosen != "") {
+      if (
+        (this.questions[this.questionsindex].text != null &&
+          this.questions[this.questionsindex].text != "") ||
+        (this.questions[this.questionsindex].answerchosen != null &&
+          this.questions[this.questionsindex].answerchosen != "")
+      ) {
         this.proceed = true;
       }
     },
@@ -294,50 +339,48 @@ export default {
   margin-bottom: 20px;
 }
 
-input{
-    width: calc( 100% - 60px);
-    text-align: right;
-    background: none;
-    border: none;
-    border-bottom: 2px solid white;
-    caret-color: white;
-    color: white;
-    font-size: 25px;
-
+input {
+  width: calc(100% - 60px);
+  text-align: right;
+  background: none;
+  border: none;
+  caret-color: white;
+  color: white;
+  font-size: 25px;
 }
 
-input:focus{
-    outline: none;
+input:focus {
+  outline: none;
 }
 
-textarea:focus{
-    outline: none;
+textarea:focus {
+  outline: none;
 }
 
-textarea{
-    width: 100%;
-    border-radius: 10px;
-    color: white;
-    font-size: 15px;
-    background-color: #161A21;
-    border: none;
-    height: 120px;
-    resize: none;
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+  background-color: #161a21;
+  border: none;
+  height: 120px;
+  resize: none;
 }
 
-#currency{
-    width: 40px;
-    margin-left: 20px;
-    font-size: 25px;
-    text-align: right;
+#currency {
+  width: 40px;
+  margin-left: 20px;
+  font-size: 25px;
+  text-align: right;
 }
-input[type=number]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.area{
-    background-color: #161A21;
-    border-radius: 10px;
-    padding: 15px;
+.area {
+  background-color: #161a21;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 /* width */
@@ -347,13 +390,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 /* Track */
 #scrollbar::-webkit-scrollbar-track {
-  background: #1A2029;
+  background: #1a2029;
   border-radius: 10px;
 }
 
 /* Handle */
 #scrollbar::-webkit-scrollbar-thumb {
-  background: #272F3D;
+  background: #272f3d;
   border-radius: 10px;
 }
 
@@ -362,17 +405,47 @@ input[type=number]::-webkit-inner-spin-button {
   background: #303744;
 }
 
-.surrounding-topdown{
-    transition: all 2s ease;
+.surrounding-topdown {
+  transition: all 2s ease;
 }
 
-.dropdown{
-    width: 100%;
+
+#just-icon{
+  padding: 13px;
+  margin: 0px;
 }
-.inputfordropdown::before{
-    opacity: 0;
+
+#just-icon .material-icons{
+  margin: 0px;
 }
-.inputfordropdown{
-    opacity: 1;
+
+#button-line{
+  margin-top: 2em;
+}
+
+#vertical-line{
+  border-bottom: 2px solid white;
+  width: 100%;
+}
+
+#button-line button{
+  margin: 0px;
+}
+
+#rocketsvg{
+  width: 40%;
+}
+
+@media screen and (max-width: 768px) {
+  #question-mobile{
+    flex-direction: column-reverse;
+  }
+
+#rocketsvg{
+  width: 50%;
+}
+.width-50{
+width: 50%;
+}
 }
 </style>

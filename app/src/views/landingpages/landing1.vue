@@ -65,9 +65,9 @@
           <button class="pb">Jetzt Kontaktieren</button>
         </div>
       </div>
-      <div class="white-section fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
+      <div class="white-section scnd fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
         <div class="side">
-          <h2>Heukunden überzeugen mit einem professionellen Webauftritt</h2>
+          <h2 class="fat">Abläufe automatisieren mit modernen Webanwendungen</h2>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -126,7 +126,6 @@
       <div class="banner-inner margin-0" id="mysection">
         <img src="@/assets/team/me.jpg" alt="profilepic" id="myimg" />
         <h2>Hey, ich bin Florian!</h2>
-        <h3>Ich löse Probleme mit Softwareentwicklung</h3>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
@@ -153,6 +152,10 @@ export default {
   data() {
     return {
       ratingindex: 0,
+      touchstartX: null,
+      touchendX: null,
+      touchstartY: null,
+      touchendY: null,
       ratings: [
         {
           customer: "Brigitte Bachl",
@@ -169,6 +172,7 @@ export default {
       ],
     };
   },
+  
   components: {
     Landingsvg,
     Automationsvg,
@@ -180,9 +184,49 @@ export default {
   computed: {},
   created() {
     this.$store.dispatch("setLogoWhite", false);
+
+  
   },
-  watch: {},
+  mounted() {
+      document
+        .getElementById("rating").addEventListener('touchstart', (event)=> {
+    this.touchstartX = event.changedTouches[0].screenX;
+     this.touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+    document
+        .getElementById("rating").addEventListener('touchend', (event)=> {
+         this.touchendX = event.changedTouches[0].screenX;
+         this.touchendY = event.changedTouches[0].screenY;
+        this.handleGesture();
+    }, false);
+  },
+  watch: {
+  },
   methods: {
+    handleGesture() {
+    if (this.touchendX < this.touchstartX) {
+        this.forward();
+        console.log('Swiped left');
+    }
+
+    if (this.touchendX > this.touchstartX) {
+        this.back();
+        console.log('Swiped right');
+    }
+
+    if (this.touchendY < this.touchstartY) {
+        console.log('Swiped Up');
+    }
+
+    if (this.touchendY > this.touchstartY) {
+        console.log('Swiped Down');
+    }
+
+    if (this.touchendY === this.touchstartY) {
+        console.log('Tap');
+    }
+},
     setActive(index) {
       this.ratingindex = index;
     },
@@ -263,6 +307,7 @@ export default {
 #websitesvg,
 #automationsvg {
   width: 40%;
+
 }
 
 .bannerimg {
@@ -301,6 +346,7 @@ export default {
   text-align: left;
   margin: 60px;
   max-width: 70%;
+  
 }
 
 #ratingimg {
@@ -323,16 +369,14 @@ export default {
 }
 
 #mysection {
-  margin-top: 130px;
-  margin-bottom: 130px;
-}
-
-#mysection h3 {
-  margin-bottom: 50px;
+  margin-top: 5em;
+  padding-bottom: 5em;
+  
 }
 
 #mysection p {
-  margin: 30px;
+  margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 #landing-logo {
@@ -340,24 +384,107 @@ export default {
   left: calc(50% - 135px);
   right: calc(50% - 135px);
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) and (min-width: 450px){
+  .service-container{
+  flex-direction: row;
+
+}
+.side{
+  width: 70%;
+  
+}
+#websitesvg, #automationsvg{
+  width: 60%;
+}
+
+#mysection{
+  margin-bottom: 0px;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+#banner-content{
+  height: 40em;
+  padding-top: 3em;
+  justify-content: center;
+}
+#landingsvg{
+  display: none;
+}
+
+.side{
+  margin: 0 auto;
+  text-align: center;
+}
+
+#service-banner .fb-fd-r{
+  flex-direction: column;
+}
+
+.service-container{
+  padding: 1.6em;
+  width: calc( 100% - 3.2em);
+  margin-bottom: 0.5em;
+}
+#smallwebsitesvg, #cloudsvg, #pcsvg{
+  width: 15em;
+  padding: 0px;
+  padding-right: 1.6em;
+} 
+
+.white-section{
+  flex-direction: column;
+  height: unset;
+}
+
+.scnd{
+  flex-direction: column-reverse;
+}
+
+
+
+.white-section .side{
+  padding-top: 0em;
+  width: calc( 100% - 80px);
+}
+
+#rating{
+  flex-direction: column;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+}
+
+#ratingimg{
+  margin: 2em;
+}
 }
 
 @media screen and (max-width: 450px) {
-  .fb-fd-r {
-    flex-direction: column;
-  }
-  #main-bg .fb-fd-r {
-    flex-direction: column-reverse;
-  }
 
-  #main-bg {
-    height: 100vh;
-    text-align: center;
-  }
-  .side {
-    padding: 20px;
-    width: calc(100% - 40px);
-  }
+.side{
+  
+  width: 100%;
+}
+
+.white-section .side{
+  padding: 0px;
+  width: 100%;
+  text-align: left;
+}
+#websitesvg, #automationsvg{
+  padding-top: 2em;
+  width: 80%;
+}
+
+#rating{
+  font-size: 15px;
+}
+
+#banner-content{
+  height: 40em;
+}
 }
 </style>

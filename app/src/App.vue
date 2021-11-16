@@ -74,6 +74,10 @@ p{
   font-size: 1em;
 }
 
+.f-l{
+  float: left;
+}
+
 .fb{
   display: flex;
 }
@@ -240,7 +244,7 @@ button::before{
  
 
 .button-with-icon{
-  padding: 15.5px 25px !important;
+  padding: 15.5px 25px ;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -248,7 +252,7 @@ button::before{
 }
 
 .button-with-icon-and-line{
-  padding: 13px 22px !important;
+  padding: 13px 22px;
 }
 
 button .material-icons{
@@ -269,6 +273,10 @@ button .material-icons{
   width: 60%;
 }
 
+.width-50{
+  width: 50%;
+}
+
 .width-40{
   width: 40%;
 }
@@ -281,5 +289,13 @@ button .material-icons{
   padding: 60px;
   width: 80px;
   height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+.margin-0{
+  margin: 20px;
+  max-width: calc( 100% - 40px);
+}
 }
 </style>

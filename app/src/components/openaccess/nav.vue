@@ -99,13 +99,14 @@ export default {
 }
 
 #menu {
-  width: 300px;
-  padding: 20px;
+  width: 19em;
+  padding: 1em;
   height: 100vh;
   z-index: 1000;
   position: fixed;
   top: 0;
   right: 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .pb {
@@ -118,7 +119,7 @@ export default {
 }
 
 #menu-items{
-    line-height: 80px;
+    line-height: 4em;
 }
 
 #menu-items .clickable{

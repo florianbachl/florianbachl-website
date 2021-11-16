@@ -431,6 +431,7 @@ export default {
 </script>
 
 <style scoped>
+
       #automationsvg .cls-1 {
         fill: #c3defc;
       }
