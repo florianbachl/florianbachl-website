@@ -1,15 +1,7 @@
 <template>
   <div id="nav">
     <div class="margin-0 fb fb-fd-r fb-ai-c fb-jc-sb">
-      <div id="menu-spacer"></div>
-      <a :href="'/landing1'" class="clickable">
-        <div v-if="isLogoWhite">
-          <img src="@/assets/logos/logo_white.svg" alt="logo" class="logo" />
-        </div>
-        <div v-else>
-          <img src="@/assets/logos/logo_color.svg" alt="logo" class="logo" />
-        </div>
-      </a>
+    <Logo></Logo>
       <span
         class="material-icons clickable"
         id="hamburger"
@@ -59,11 +51,13 @@
 </template>
 
 <script>
+import Logo from '../svgs/logo.vue';
 export default {
   name: "nav",
   data() {
     return {};
   },
+  components:{Logo},
   computed: {
     isLogoWhite() {
       return this.$store.getters.isLogoWhite;
@@ -85,16 +79,13 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
+  margin-top: 20px;
   width: 100%;
 }
 
-#menu-spacer {
-  width: 60px;
-}
-
 #hamburger {
-  width: 60px;
-  text-align: right;
+  font-size: 30px;
+
 }
 
 .hamburger-gradient {

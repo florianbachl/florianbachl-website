@@ -44,7 +44,7 @@ html {
 
 .margin-0{
   margin: auto;
-  max-width: 1200px;
+  max-width: 1100px;
 }
 
 .margin-0-small{
@@ -53,15 +53,17 @@ html {
 }
 
 h1{
- font-size: 2em;
+line-height: 1.25em;
+ font-size: 2.8em;
 }
 
 h2{
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
 
 h3{
-  font-size: 1.3em;
+  font-size: 1.25em;
+    line-height: 1.5em;
 }
 
 h4{
@@ -201,6 +203,9 @@ a{
 .fat{
   font-weight: 500;
 }
+.veryfat{
+  font-weight: 600;
+}
 
 button{
   border-radius: 50px; 
@@ -208,8 +213,8 @@ button{
   color: white;
   border: none;
   padding: 18px 25px;
-  line-height: 15px;
-  font-size: 15px;
+  line-height: 1em;
+  font-size: 1em;
   font-weight: 500; 
   z-index: 0;
   cursor: pointer;
@@ -274,7 +279,7 @@ button .material-icons{
 
 .logo {
   padding: 60px;
-  width: 130px;
+  width: 80px;
   height: auto;
 }
 </style>

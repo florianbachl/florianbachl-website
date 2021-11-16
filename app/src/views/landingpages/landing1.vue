@@ -1,130 +1,128 @@
 <template>
   <div id="landing1" class="grey1">
-    <div id="main-bg">
-      <div id="banner-content" class="fb fb-fd-r fb-ai-c fb-jc-sb">
-        <div class="side">
-          <h1 class="white-t">
-            <span class="fat">Digitale Lösungen</span><br />
-            für dein Unternehmen
-          </h1>
-          <h3 class="white-t">
-            <span class="fat">Professionelle Applikationen</span> und Webdesign
-          für die Zukunft
-          </h3>
-          <button class="sb ">
-            Jetzt Kontaktieren
-          </button>
-        </div>
-        <div class="side">Grafik</div>
+    <div id="banner-content" class="fb fb-fd-r fb-ai-c fb-jc-sb">
+      <div class="side">
+        <h1 class="veryfat">Digitale Lösungen für dein Unternehmen</h1>
+        <h2>Professionelle Applikationen und Webdesign für die Zukunft</h2>
+        <button class="pb">Jetzt Kontaktieren</button>
       </div>
-    </div>
-    <div id="content-landing">
-      <img
-        src="@/assets/backgrounds/t1.png"
-        alt="UpperBanner"
-        class="bannerimg"
-        id="upper-banner-top"
-        width="1921"
-        height="95"
-      />
-      <div id="service-banner" class="banner-inner white">
-        <h2>Services auf einen Blick</h2>
-        <div class="fb fb-fd-r fb-jc-c fb-ai-c margin-0">
-          <div class="service-container">
-            <h3>Websites &<br />Landingpages</h3>
-            <p>Some Text</p>
-          </div>
-          <div class="service-container">
-            <h3>Webapps &<br />Cloud-Anwendungen</h3>
-            <p>Some Text</p>
-          </div>
-          <div class="service-container">
-            <h3>Desktop-<br />Anwendungen</h3>
-            <p>Some Text</p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="@/assets/backgrounds/b1.png"
-        alt="UpperBanner"
-        class="bannerimg"
-        width="1921"
-        height="80"
-      />
 
-      <div class="white-section fb fb-fd-r fb-ai-c fb-jc-c  margin-0">
-        <div class="side">Grafik</div>
-        <div class="side">
-          <h2>Heukunden überzeugen mit einem professionellen Webauftritt</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren,
-          </p>
-          <button class="pb">Jetzt Kontaktieren</button>
-        </div>
-      </div>
-      <div class="white-section fb fb-fd-r fb-ai-c fb-jc-c  margin-0">
-        <div class="side">
-          <h2>Heukunden überzeugen mit einem professionellen Webauftritt</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren,
-          </p>
-          <button class="pb">Jetzt Kontaktieren</button>
-        </div>
-        <div class="side">Grafik</div>
-      </div>
-      <img
-        src="@/assets/backgrounds/t2.png"
-        alt="UpperBanner"
-        class="bannerimg"
-        id="lower-banner-top"
-        width="1921"
-        height="84"
-      />
-      <div class="banner-inner white">
-        <h2>Das sagen andere Kunden</h2>
-        <span class="fb fb-fd-r fb-ai-c fb-jc-c margin-0" id="customer-slider">
-          <span
-            class="material-icons clickable margin-20 grey3-t"
-            @click="back"
-          >
-            arrow_back_ios
-          </span>
-          <img :src="require('@/assets/customers/'+ratings[ratingindex].img)" alt="profilepic" id="ratingimg" />
-          <div id="rating">
-            <h3>{{ ratings[ratingindex].text }}</h3>
-            <h3>{{ ratings[ratingindex].customer }}</h3>
-            <p>{{ ratings[ratingindex].position }}</p>
+      <Landingsvg></Landingsvg>
+    </div>
+
+    <div id="content-landing">
+      <div id="service-banner">
+        <div class="fb fb-fd-r fb-jc-c fb-ai-c margin-0">
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
+            <Smallwebsitesvg></Smallwebsitesvg>
+            <span
+              ><h3 class="fat">Websites & Landingpages</h3>
+              <p>
+                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
+                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
+                diam.
+              </p>
+            </span>
           </div>
-          <span
-            class="material-icons clickable margin-20 grey3-t"
-            @click="forward"
-          >
-            arrow_forward_ios
-          </span>
-        </span>
-        <div class="fb fb-fd-r fb-ai-c fb-jc-c" id="slider-dots">
-          <span v-for="(dot, index) in ratings" :key="index">
-            <div
-              class="dot clickable"
-              :class="{ 'active-dot': index == ratingindex }"
-              @click="setActive(index)"
-            ></div>
-          </span>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
+            <Cloudsvg></Cloudsvg>
+            <span
+              ><h3 class="fat">Webapps & Cloudapps</h3>
+              <p>
+                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
+                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
+                diam.
+              </p></span
+            >
+          </div>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
+            <Pcsvg></Pcsvg>
+            <span
+              ><h3 class="fat">Desktop-Anwendungen</h3>
+              <p>
+                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
+                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
+                diam.
+              </p></span
+            >
+          </div>
         </div>
       </div>
-      <img
-        src="@/assets/backgrounds/b2.png"
-        alt="UpperBanner"
-        class="bannerimg"
-        width="1921"
-        height="67"
-      />
+
+      <div class="white-section fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
+        <Websitesvg></Websitesvg>
+
+        <div class="side">
+          <h2 class="fat">
+            Neukunden überzeugen mit einem professionellen Webauftritt
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren,
+          </p>
+          <button class="pb">Jetzt Kontaktieren</button>
+        </div>
+      </div>
+      <div class="white-section fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
+        <div class="side">
+          <h2>Heukunden überzeugen mit einem professionellen Webauftritt</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren,
+          </p>
+          <button class="pb">Jetzt Kontaktieren</button>
+        </div>
+        <Automationsvg></Automationsvg>
+      </div>
+
+      <div class="banner-inner">
+        <div class="white margin-0 customer-section">
+          <h2 class="fat">Das sagen andere Kunden</h2>
+          <span class="fb fb-fd-r fb-ai-c fb-jc-sb">
+            <span
+              class="material-icons clickable margin-20 grey3-t"
+              @click="back"
+            >
+              arrow_back_ios
+            </span>
+
+           
+            <div id="rating" class="fb fb-fd-r fb-ai-c fb-jc-c">
+               <img
+              :src="require('@/assets/customers/' + ratings[ratingindex].img)"
+              alt="profilepic"
+              id="ratingimg"
+            />
+              <span><h3>"{{ ratings[ratingindex].text }}"</h3>
+              <br>
+              <h3>{{ ratings[ratingindex].customer }}</h3>
+              <p>{{ ratings[ratingindex].position }}</p>
+              </span>
+            </div>
+
+            <span
+              class="material-icons clickable margin-20 grey3-t"
+              @click="forward"
+            >
+              arrow_forward_ios
+            </span>
+          </span>
+          <div class="fb fb-fd-r fb-ai-c fb-jc-c" id="slider-dots">
+                <span v-for="(dot, index) in ratings" :key="index">
+                  <div
+                    class="dot clickable"
+                    :class="{ 'active-dot': index == ratingindex }"
+                    @click="setActive(index)"
+                  ></div>
+                </span>
+              </div>
+        </div>
+      </div>
+
       <div class="banner-inner margin-0" id="mysection">
         <img src="@/assets/team/me.jpg" alt="profilepic" id="myimg" />
         <h2>Hey, ich bin Florian!</h2>
@@ -138,12 +136,18 @@
         <h4>Florian Bachl, B.Sc.</h4>
         <p>Software & Webdesign</p>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
+import Landingsvg from "../../components/svgs/landingsvg";
+import Automationsvg from "../../components/svgs/automationsvg";
+import Websitesvg from "../../components/svgs/websitesvg";
+import Smallwebsitesvg from "../../components/svgs/smallwebsitesvg";
+import Cloudsvg from "../../components/svgs/cloudsvg";
+import Pcsvg from "../../components/svgs/pcsvg";
+
 export default {
   name: "landing1",
   data() {
@@ -154,20 +158,28 @@ export default {
           customer: "Brigitte Bachl",
           position: "Geschäftsführerin Bachl Nachhilfe",
           text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
-          img: "bachl.png"
+          img: "bachl.png",
         },
         {
           customer: "Brigitte Berchl",
           position: "Geschäftsführerin Bachl Nachhilfe",
           text: "Lorem ipsum dolor sit amet, conseafr htjzfkghfjd hgsftetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
-          img: "bachl.png"
+          img: "bachl.png",
         },
       ],
     };
   },
+  components: {
+    Landingsvg,
+    Automationsvg,
+    Websitesvg,
+    Smallwebsitesvg,
+    Cloudsvg,
+    Pcsvg,
+  },
   computed: {},
-  created(){
-    this.$store.dispatch('setLogoWhite', true)
+  created() {
+    this.$store.dispatch("setLogoWhite", false);
   },
   watch: {},
   methods: {
@@ -196,22 +208,15 @@ export default {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-#main-bg {
-  background: linear-gradient(0.13turn, #340a94 0%, #01CFDC 100%);
-  width: 100%;
-  height: calc(100vh + 100px);
-  z-index: -20;
-}
 
-#main-bg h1 {
-  line-height: 1.4em;
-  margin-bottom: 1em;
+#banner-content h1 {
+  margin-bottom: 0.4em;
 }
 
 #banner-content {
   width: 100%;
-  height: 100%;
-  max-width: 1200px;
+  height: 700px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -221,9 +226,8 @@ export default {
   height: auto;
 }
 
-#main-bg h3 {
-  line-height: 1.5em;
-  margin-bottom: 2.5em;
+#banner-content h2 {
+  margin-bottom: 1.5em;
 }
 
 .side {
@@ -238,20 +242,27 @@ export default {
 }
 
 .service-container {
-  width: calc(33% - 40px);
-  padding: 20px;
+  width: calc(33% - 70px);
+  padding: 25px;
+  margin: 10px;
   margin-bottom: 5em;
-  margin-top: 5em;
 }
 
-#upper-banner-top {
-  position: absolute;
-  transform: translateY(calc(-100% + 1px));
+.service-container h3 {
+  padding-bottom: 0.5em;
 }
 
-#lower-banner-top {
-  transform: translateY(calc(-100% + 1px));
-  position: absolute;
+#pcsvg,
+#cloudsvg,
+#smallwebsitesvg {
+  width: 60%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#websitesvg,
+#automationsvg {
+  width: 40%;
 }
 
 .bannerimg {
@@ -260,12 +271,12 @@ export default {
 }
 
 .white-section {
-  height: 40em;
+  height: 30em;
   width: 100%;
 }
 
 .white-section p {
-  margin-top: 2em;
+  margin-top: 0.7em;
   margin-bottom: 2em;
 }
 
@@ -281,20 +292,22 @@ export default {
   background-color: #185cbc;
 }
 
+.customer-section {
+  padding: 1em 0em;
+  margin-top: 5em;
+}
+
 #rating {
   text-align: left;
-  max-width: 900px;
-  margin-right: 60px;
-  margin-left: 60px;
-  margin-bottom: 80px;
+  margin: 60px;
+  max-width: 70%;
 }
 
 #ratingimg {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  margin-left: 60px;
-  margin-bottom: 80px;
+  width: 180px;
+  height: 180px;
+  margin-right: 5em
 }
 
 #myimg {
@@ -303,9 +316,7 @@ export default {
   height: 200px;
 }
 
-#customer-slider {
-  margin-top: 50px;
-}
+
 
 #slider-dots {
   padding-bottom: 20px;
@@ -322,34 +333,31 @@ export default {
 
 #mysection p {
   margin: 30px;
-
 }
 
-#landing-logo{
+#landing-logo {
   position: absolute;
-  left: calc( 50% - 135px) ;
-  right:calc( 50% - 135px) ;
+  left: calc(50% - 135px);
+  right: calc(50% - 135px);
 }
-@media screen and (max-width:720px) {
-
+@media screen and (max-width: 720px) {
 }
 
-@media screen and (max-width:450px) {
-  .fb-fd-r{
+@media screen and (max-width: 450px) {
+  .fb-fd-r {
     flex-direction: column;
   }
-  #main-bg .fb-fd-r{
+  #main-bg .fb-fd-r {
     flex-direction: column-reverse;
   }
 
-  #main-bg{
+  #main-bg {
     height: 100vh;
     text-align: center;
   }
-  .side{
+  .side {
     padding: 20px;
-    width: calc( 100% - 40px);
+    width: calc(100% - 40px);
   }
 }
-
 </style>
