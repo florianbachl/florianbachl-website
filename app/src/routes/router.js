@@ -24,7 +24,7 @@ async function requireAuth(to, from, next) {
 
 const routes = [
   {
-    path: '/landing1',
+    path: '/',
     name: 'landing1',
     component: landing1,
   },

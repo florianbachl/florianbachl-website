@@ -1,15 +1,19 @@
 <template>
   <div id="footer">
     <div id="bottom-cta" v-if="$route.name != 'quiz'">
-      <div class="margin-0 white-t fb fb-fd-c fb-jc-c fb-ai-fs">
-        <h2>Nicht sicher, wonach du suchst?</h2>
+      <div class="margin-0 white-t fb fb-fd-r fb-jc-sb fb-ai-c">
+        <div>
+           <h2>Nicht sicher, wonach du suchst?</h2>
         <p>Mach das Quiz und definiere dein Problem!</p>
         <a :href="'/quiz'"
           ><button class="sb button-with-icon button-with-icon-and-line">
             Quiz starten
             <span class="material-icons">arrow_right_alt</span>
-          </button></a
-        >
+          </button></a>
+        </div>
+        <Smallrocketsvg></Smallrocketsvg>
+       
+        
       </div>
     </div>
     <div id="bottom-links" class="darkblue">
@@ -19,8 +23,8 @@
       >
         <div class="bottom-container">
           <h4><span class="fat">Sitemap</span></h4>
-          <a :href="'/landing1'"><p class="clickable">Startseite</p></a>
-          <a :href="'/about'"><p class="clickable">About</p></a>
+          <a :href="'/'"><p class="clickable">Startseite</p></a>
+          <a :href="'/quiz'"><p class="clickable">Quiz</p></a>
           <a :href="'/projects'"><p class="clickable">Projekte</p></a>
           <a :href="'/contact'"><p class="clickable">Kontakt</p></a>
         </div>
@@ -84,10 +88,14 @@
 </template>
 
 <script>
+import Smallrocketsvg from "../../components/svgs/smallrocketsvg";
 export default {
   name: "footer",
   data() {
     return {};
+  },
+    components: {
+    Smallrocketsvg,
   },
   computed: {},
   watch: {},
@@ -155,8 +163,26 @@ export default {
   padding-bottom: 30px;
 }
 
+#smallrocketsvg{
+  width: 15em;
+  margin-right: 4em;
+}
+
 a {
   color: white;
+}
+@media screen and (min-width: 768px) and (max-width: 1200px){
+  #bottom-links .fb:nth-child(1){
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    flex-direction: unset;
+    justify-content: unset;
+  }
+  .bottom-container{
+    width: calc(100% - 2em);
+    padding: 1em
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -172,5 +198,8 @@ a {
   #bottom-links .margin-0{
     margin-top: 0px;
   }
+  #smallrocketsvg{
+ display: none;
+}
 }
 </style>

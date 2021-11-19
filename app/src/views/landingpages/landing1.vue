@@ -4,7 +4,8 @@
       <div class="side">
         <h1 class="veryfat">Digitale Lösungen für dein Unternehmen</h1>
         <h2>Professionelle Applikationen und Webdesign für die Zukunft</h2>
-        <button class="pb">Jetzt Kontaktieren</button>
+         <a :href="'/contact'"
+          ><button class="pb">Jetzt Kontaktieren</button></a>
       </div>
 
       <Landingsvg></Landingsvg>
@@ -12,37 +13,34 @@
 
     <div id="content-landing">
       <div id="service-banner">
-        <div class="fb fb-fd-r fb-jc-c fb-ai-c margin-0">
+        <div class="fb fb-fd-r fb-jc-c fb-ai-fs">
           <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
             <Smallwebsitesvg></Smallwebsitesvg>
             <span
               ><h3 class="fat">Websites & Landingpages</h3>
               <p>
-                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
-                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
-                diam.
+                Moderne und professionelle Websites für Unternehmen, 
+                die Interessenten zu Kunden machen möchten.
               </p>
             </span>
           </div>
           <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
-            <Cloudsvg></Cloudsvg>
-            <span
-              ><h3 class="fat">Webapps & Cloudapps</h3>
-              <p>
-                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
-                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
-                diam.
-              </p></span
-            >
-          </div>
-          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
             <Pcsvg></Pcsvg>
             <span
-              ><h3 class="fat">Desktop-Anwendungen</h3>
+              ><h3 class="fat">Webapps & Desktopapps</h3>
               <p>
-                Lorem ipsum dolor sit amet consetetu sadipscing elitr, sed diam
-                Lorem ipsum dolor sit amet consetetur sadipscing elitr, sed
-                diam.
+                Digitale und maßgeschneiderte Applikationen, 
+                die Abläufe automatisieren und Resourcen sparen.
+              </p>
+              </span>
+          </div>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
+            <Cloudsvg></Cloudsvg>
+            <span
+              ><h3 class="fat">Cloud-Anwendungen</h3>
+              <p>
+                Jederzeit und von überall auf Firmenresourcen 
+              zugreifen und die Produktivität steigern.
               </p></span
             >
           </div>
@@ -54,27 +52,25 @@
 
         <div class="side">
           <h2 class="fat">
-            Neukunden überzeugen mit einem professionellen Webauftritt
+            Erfolgreiches Webdesign liegt in der Liebe zum Detail
           </h2>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren,
+           Du möchtest online verkaufen, Termine über deine Website vereinbaren oder einfach nur Kunden informieren?
+            Rücke deine Marke in ein modernes Licht mit professionellem und maßgeschneidertem Webdesign, das intuitiv und einfach zu benutzen ist.
+            Vom Erstgespräch bis hin zur vollständigen Anwendung wickle ich dein Projekt mit größter Sorgfalt ab.
           </p>
-          <button class="pb">Jetzt Kontaktieren</button>
+          <a :href="'/projects'"> <button class="pb">Projekte Ansehen</button></a>
         </div>
       </div>
       <div class="white-section scnd fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
         <div class="side">
-          <h2 class="fat">Abläufe automatisieren mit modernen Webanwendungen</h2>
+          <h2 class="fat">Intuitive Anwendungen als Lösung für komplexe Probleme</h2>
           <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren,
+            Automatisiere die Probleme, die dir und deinen Mitarbeitern täglich Zeit kosten. 
+            Durch effiziente Projektplanung und Zieldefinition werden vielschichtige Aufgaben zuerst klar strukturiert und dann automatisiert.
+            Mit modernsten Technologien setze ich Full-Stack-Anwendungen, Web- und Cloudapps um und lege dabei immer den Fokus auf die Usability des Endproduktes.
           </p>
-          <button class="pb">Jetzt Kontaktieren</button>
+           <a :href="'/contact'"><button class="pb">Jetzt Kontaktieren</button></a>
         </div>
         <Automationsvg></Automationsvg>
       </div>
@@ -127,10 +123,15 @@
         <img src="@/assets/team/me.jpg" alt="profilepic" id="myimg" />
         <h2>Hey, ich bin Florian!</h2>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren,
+          Seit meinem Abschluss als B.Sc. an der Fachhochschule Hagenberg durfte ich 
+          für meine Kunden viele Projekte im Bereich Web und Software umsetzen. 
+          Wenn ich mich entscheiden müsste, was mir an meiner Tätigkeit am besten gefällt,
+          dann wohl die Notwendigkeit, komplexe Aufgaben in einfachster und intuitiver Form darzustellen.
+          Programmierer finden oft Spaß daran, einfache Aufgaben kompliziert zu machen.
+          Das Ergebnis ist dann oft die sogenannte "Eier-legende Wollmilch-Sau". In der Programmierung 
+          zwar ein Meisterwerk, für den Benutzer aber ein Albtraum.
+          Ob Mitarbeiter in einem Unternehmen oder potentieller Kunde, jeder Nutzer verdient 
+          eine optimierte und einfach zu bedienende Oberfläche. 
         </p>
         <h4>Florian Bachl, B.Sc.</h4>
         <p>Software & Webdesign</p>
@@ -160,13 +161,7 @@ export default {
         {
           customer: "Brigitte Bachl",
           position: "Geschäftsführerin Bachl Nachhilfe",
-          text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
-          img: "bachl.png",
-        },
-        {
-          customer: "Brigitte Berchl",
-          position: "Geschäftsführerin Bachl Nachhilfe",
-          text: "Lorem ipsum dolor sit amet, conseafr htjzfkghfjd hgsftetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ",
+          text: "Zuerst dachte ich, das man das alles nie in nur einem Programm unterbringen könne. Seit wir das neue Organisationsprogramm verwenden, hat sich mein Organisationsaufwand um 90% verringert.",
           img: "bachl.png",
         },
       ],
@@ -248,6 +243,11 @@ export default {
 };
 </script>
 <style >
+
+#service-banner{
+  margin: auto;
+  max-width: 1100px;
+}
 .banner-inner h2 {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -384,6 +384,14 @@ export default {
   left: calc(50% - 135px);
   right: calc(50% - 135px);
 }
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .customer-section, #mysection{
+    margin: 0px 1em;
+    max-width: calc( 100% - 2em);
+  }
+}
+
 @media screen and (max-width: 768px) and (min-width: 450px){
   .service-container{
   flex-direction: row;
@@ -424,7 +432,7 @@ export default {
 
 .service-container{
   padding: 1.6em;
-  width: calc( 100% - 3.2em);
+  width: calc( 100% - 3.2em - 20px);
   margin-bottom: 0.5em;
 }
 #smallwebsitesvg, #cloudsvg, #pcsvg{
@@ -479,12 +487,20 @@ export default {
   width: 80%;
 }
 
+.customer-section{
+  padding: 0.7em;
+}
+
 #rating{
   font-size: 15px;
 }
 
 #banner-content{
   height: 40em;
+}
+
+.margin-20{
+  margin: 10px;
 }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div id="logo">
-    <a :href="'/landing1'" class="clickable">
-      <div v-if="isLogoWhite">
+  <div>
+    <a :href="'/'" class="clickable">
+      <div v-if="isLogoWhite" id="logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165.459 92.484">
           <path
             id="logo_white"
@@ -10,7 +10,7 @@
           />
         </svg>
       </div>
-      <div v-else>
+      <div v-else  id="logo">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -53,8 +53,16 @@ export default {
 </script>
 
 <style scoped>
-svg {
-  width: 100px
-
+#logo{
+  
+  width: 4em;
 }
+
+
+@media screen and (max-width: 450px) {
+  #logo{
+  width: 3em;
+}
+}
+
 </style>

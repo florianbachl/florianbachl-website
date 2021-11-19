@@ -1,10 +1,19 @@
 <template>
-  <div id="nav">
-    <div class="margin-0 fb fb-fd-r fb-ai-c fb-jc-sb">
-    <Logo></Logo>
+  <div id="nav" class="white">
+    <div class="margin-0 fb fb-fd-r fb-ai-c fb-jc-sb ">
+      <span class="fb fb-fd-r fb-ai-c fb-jc-fs">
+        <Logo></Logo>
+        <a :href="'/quiz'"><p class="clickable onlyondesktop">Quiz</p></a>
+        <a :href="'/projects'"
+          ><p class="clickable onlyondesktop">Projekte</p></a
+        >
+        <a :href="'/contact'"><p class="clickable onlyondesktop ">Kontakt</p></a>
+      </span>
+      <a :href="'/contact'"><button class="sb blackbutton onlyondesktop">Kontakt aufnehmen</button></a>
       <span
         class="material-icons clickable"
         id="hamburger"
+        v-if="!isexpanded"
         :class="[isLogoWhite ? 'hamburger-white' : 'hamburger-gradient']"
         @click="setExpanded(true)"
         >drag_handle</span
@@ -12,17 +21,18 @@
     </div>
     <div v-if="isexpanded" id="menu" class="grey1 fb fb-fd-c fb-ai-s fb-jc-sb">
       <div class="fb fb-fd-r fb-ai-c fb-jc-sb">
-        <span class="material-icons clickable" @click="setExpanded(false)">arrow_right_alt</span>
+        <span class="material-icons clickable" @click="setExpanded(false)"
+          >arrow_right_alt</span
+        >
         <a :href="'/login'"><p class="hamburger-gradient">Login</p></a>
       </div>
       <div id="menu-items">
-        <a :href="'/landing1'"><p class="clickable">Startseite</p></a>
-        <a :href="'/about'"><p class="clickable">About</p></a>
+        <a :href="'/quiz'"><p class="clickable">Quiz</p></a>
         <a :href="'/projects'"><p class="clickable">Projekte</p></a>
         <a :href="'/contact'"><p class="clickable">Kontakt</p></a>
       </div>
       <div>
-        <button class="pb">Kontaktieren aufnehmen</button>
+        <a :href="'/contact'"><button class="pb">Kontakt aufnehmen</button></a>
         <span class="fb fb-fd-r fb-jc-fs fb-ai-c" id="social-icons-menu">
           <a
             href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
@@ -51,13 +61,13 @@
 </template>
 
 <script>
-import Logo from '../svgs/logo.vue';
+import Logo from "../svgs/logo.vue";
 export default {
   name: "nav",
   data() {
     return {};
   },
-  components:{Logo},
+  components: { Logo },
   computed: {
     isLogoWhite() {
       return this.$store.getters.isLogoWhite;
@@ -76,20 +86,26 @@ export default {
 </script>
 <style scoped>
 #nav {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  margin-top: 20px;
+  padding: 10px;
   width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#hamburger {
-  font-size: 30px;
+  .onlyondesktop {
+    margin-left: 2em;
+    margin-right: 1em;
+  }
 
+#hamburger {
+  display: none;
+  font-size: 30px;
 }
 
 .hamburger-gradient {
-  background: -webkit-linear-gradient(0.13turn, #340a94 0%, #01CFDC 100%);
+  background: -webkit-linear-gradient(0.13turn, #340a94 0%, #01cfdc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -118,12 +134,42 @@ export default {
   padding-top: 5px;
 }
 
-#menu-items{
-    line-height: 4em;
+#menu-items {
+  line-height: 4em;
 }
 
-#menu-items .clickable{
-    color: black;
-    font-size: 20px;
+#menu-items .clickable {
+  color: black;
+  font-size: 20px;
+}
+
+.blackbutton{
+  color: black;
+  border: 2px solid black;
+  padding: 8px 14px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .margin-0 {
+    margin: 0px 1em;
+    max-width: calc(100% - 2em);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #nav {
+    margin: 0px;
+  }
+
+  .onlyondesktop {
+    display: none;
+  }
+
+  #hamburger {
+    display: initial;
+  }
+}
+
+@media screen and (max-width: 450px) {
 }
 </style>

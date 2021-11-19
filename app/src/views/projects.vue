@@ -1,23 +1,57 @@
 <template>
-  <div id="projects" class="margin-0-small">
+  <div id="projects" class="margin-0">
     <div id="project-header">
-      <h1>Wilkommen im <span class="fat">Projekt-Portfolio</span></h1>
-      <h3>
-        Professionelle <span class="fat">Applikationen</span> und
-        <span class="fat">Webdesign</span> für die
-        <span class="fat">Zukunft</span>
-      </h3>
+      <h1 class="veryfat">Wilkommen im Projekt-Portfolio</h1>
+      <h3>Hier findest du aktuelle und vergangene Projekte, die ich für meine
+Kunden umsetzen durfte</h3>
     </div>
-    <div
-      v-for="project in projects"
-      :key="project.name"
-      class="grey1 project"
-      @mouseenter="sethover(project, true)"
-      @mouseleave="sethover(project, false)"
-    >
-      <div id="inner" class="fb fb-fd-r fb-jc-sb fb-ai-c">
-        <transition name="expand">
-          <div v-if="project.hoverbool" id="expand-text">
+    <span v-if="window.width > 450">
+      <div
+        v-for="project in projects"
+        :key="project.name"
+        class="grey1 project"
+        @mouseenter="sethover(project, true)"
+        @mouseleave="sethover(project, false)"
+      >
+        <div id="inner" class="fb fb-fd-r fb-jc-sb fb-ai-c">
+          <transition name="expand">
+            <div v-if="project.hoverbool" id="expand-text">
+              <h2>{{ project.name }}</h2>
+              <p>{{ project.text }}</p>
+              <a :href="project.link" target="_blank"
+                ><button class="pb button-with-icon">
+                  Zur Website
+                  <span class="material-icons">arrow_right_alt</span>
+                </button></a
+              >
+            </div>
+          </transition>
+          <img
+            :src="require('@/assets/projects/' + project.img)"
+            alt="projectpic"
+            width="1920"
+            height="1080"
+            class="project-img shadow"
+            :class="{ active: project.hoverbool }"
+          />
+        </div>
+      </div>
+    </span>
+    <span v-else>
+      <div
+        v-for="project in projects"
+        :key="project.name"
+        class="grey1 project-mobile"
+      >
+        <div>
+          <img
+            :src="require('@/assets/projects/' + project.img)"
+            alt="projectpic"
+            class="projectimg-mobile"
+            width="1920"
+            height="1080"
+          />
+          <div class="expand-text-mobile">
             <h2>{{ project.name }}</h2>
             <p>{{ project.text }}</p>
             <a :href="project.link" target="_blank"
@@ -27,17 +61,9 @@
               </button></a
             >
           </div>
-        </transition>
-        <img
-          :src="require('@/assets/backgrounds/' + project.img)"
-          alt="projectpic"
-          width="1920"
-          height="1080"
-          class="project-img shadow"
-          :class="{ active: project.hoverbool }"
-        />
+        </div>
       </div>
-    </div>
+    </span>
   </div>
 </template>
 
@@ -46,26 +72,42 @@ export default {
   name: "projects",
   data() {
     return {
+      window: {
+        width: 0,
+        height: 0,
+      },
       projects: [
         {
           name: "Bachl Nachhilfe",
-          text: "Website, Webapp für interne Organisation, Social Media",
+          text: "Cloudanwendung für gesamte interne Organisation, Social Media",
           hoverbool: false,
           link: "//www.bachl-nachhilfe.at",
-          img: "test.jpg",
+          img: "bachlnachhilfe.png",
         },
         {
-          name: "Bachl Nachhilfe",
-          text: "Website, Webapp für interne Organisation, Social Media",
+          name: "Sea Fun Project",
+          text: "Website",
           hoverbool: false,
-          link: "//www.bachl-nachhilfe.at",
-          img: "test.jpg",
+          link: "//www.seafunproject.com",
+          img: "seafunproject.png",
+        },
+        {
+          name: "The Noize",
+          text: "Website, Youtube, Social Media",
+          hoverbool: false,
+          link: "//www.thenoize.at",
+          img: "thenoize.png",
         },
       ],
     };
   },
-    created(){
-    this.$store.dispatch('setLogoWhite', false)
+  created() {
+    this.$store.dispatch("setLogoWhite", false);
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
   },
   computed: {},
   watch: {},
@@ -73,17 +115,20 @@ export default {
     sethover(project, bool) {
       project.hoverbool = bool;
     },
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+    },
   },
 };
 </script>
 <style scoped>
 #project-header {
-  text-align: center;
-  padding-top: 17em;
+  padding-top: 13em;
 }
 
 #projects h1 {
-  margin-bottom: 30px;
+  margin-bottom: 0.2em;
 }
 
 .project-img {
@@ -116,7 +161,7 @@ export default {
   margin-top: 130px;
   margin-bottom: 130px;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: 51.03%;
 }
 
 #inner {
@@ -137,5 +182,37 @@ export default {
 #expand-text p {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .project, #project-header{
+    margin-left: 1em;
+    margin-right: 1em;
+    max-width: calc( 100% - 2em);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #project-header {
+    padding-top: 8em;
+    padding-bottom: 4em;
+  }
+
+  .projectimg-mobile{
+    width: 100%;
+    height: auto;
+  }
+
+  .project-mobile{
+    margin-bottom: 2em;
+  }
+
+  .expand-text-mobile{
+    padding: 1em;
+    padding-top: 0.2em;
+  }
+   .expand-text-mobile .pb{
+     margin-top: 1em;
+   }
 }
 </style>

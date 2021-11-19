@@ -17,6 +17,9 @@ export default {
     Footer,
     Nav
   },
+  created(){
+    console.log("I do")
+  },
   methods: {
     setExpanded(){
       this.$store.dispatch('setExpanded', false)
@@ -265,6 +268,10 @@ button .material-icons{
 
 }
 
+.ta-c{
+  text-align: center;
+}
+
 .pb::before{
   opacity: 1;
 }
@@ -285,10 +292,34 @@ button .material-icons{
   margin-right: 10px;
 }
 
+.hide {
+  visibility: hidden;
+}
 .logo {
   padding: 60px;
   width: 80px;
   height: auto;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  width: 100%;
+  background: none;
+  border: none;
+  caret-color: white;
+  color: white;
+  font-size: 1em;
+}
+input[type="number"] {
+  width: calc(100% - 60px);
+  text-align: right;
+  font-size: 1.5em;
+}
+
+input:focus {
+  outline: none;
 }
 
 
