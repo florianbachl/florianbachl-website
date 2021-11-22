@@ -102,9 +102,9 @@
         <div v-if="introslide" class="width-50">
           <h1 id="define">Definiere dein Projekt</h1>
           <p>Manchmal kann es schwierig sein, in Worte zu fassen,
-was man benötigt, um ein Problem zu lösen. Unser
-Quiz hilft dir mit kurzen Fragen, dein Anliegen auf den
-Punkt zu bringen.</p>
+          was man benötigt, um ein Problem zu lösen. Unser
+          Quiz hilft dir mit kurzen Fragen, dein Anliegen auf den
+          Punkt zu bringen.</p>
           <button class="introbutton pb button-with-icon" @click="next()">
             Weiter
             <span class="material-icons">arrow_right_alt</span>
@@ -122,6 +122,29 @@ Punkt zu bringen.</p>
           </div>
         </div>
         <div v-if="lastslide" class="width-60 margin-0">
+          <div v-if="showconsent" id="consent-box">
+            <p>Bitte senden Sie mir Informationen über Aktionen, News und Events zu.
+            Durch Ankreuzen dieses Feldes stimme ich der Verarbeitung nachstehender Daten zu Zwecken des Marketings, 
+            dem Erhalt elektronischer Direktwerbung und personenbezogener Werbeschaltungen durch Florian Bachl Software & Webdesign, 
+            Bäuerlegasse 18/33, 1200 Wien, hello@florianbachl.at auf Grundlage meiner Einwilligung bis auf Widerruf zu.
+            Eine Weitergabe an andere Empfänger ist unzulässig. Es besteht keine Verpflichtung zur Erteilung der Zustimmung.
+            Die Nichterteilung der Zustimmung hätte lediglich zur Folge, dass ich keine Informationen zugesendet bekomme.
+            Ich habe das Recht, die Einwilligung jederzeit durch schriftliche Mitteilung zu widerrufen, 
+            ohne dass die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung berührt wird.
+            Zudem habe ich das Recht auf Auskunft über die betreffenden personenbezogenen Daten sowie auf Berichtigung
+            oder Löschung oder auf Einschränkung der Verarbeitung oder auf Widerspruch gegen die Verarbeitung sowie das Recht
+            auf Datenübertragbarkeit und das Recht zur Beschwerde bei der Aufsichtsbehörde.
+            Mit dem Klick auf "Absenden" stimme ich zu,
+            dass meine Informationen für die Bearbeitung an Mailchimp weitergeleitet werden.
+            <a
+                        href="https://mailchimp.com/legal/terms"
+                        target="_blank"
+                        >Learn more about Mailchimp's privacy practices here.</a
+                      ></p>
+                       <button class="sb blackbutton" @click="showconsent = false">
+            schließen
+          </button>
+          </div>
           <!--
             Bitte senden Sie mir Informationen über Aktionen, News und Events zu.
             Durch Ankreuzen dieses Feldes stimme ich der Verarbeitung nachstehender Daten zu Zwecken des Marketings, 
@@ -298,7 +321,7 @@ Punkt zu bringen.</p>
                     class="checkbox-consent"
                     id="mce-CONSENT-0"
                   /><label for="mce-CONSENT-0"
-                    >Ich habe die Datenschutz-Bedingungen gelesen und bin mit
+                    >Ich habe die <span @click="showconsent = true" class="clickable pc">Datenschutz-Bedingungen</span> gelesen und bin mit
                     der Datenverarbeitung einverstanden.</label
                   >
                 </div>
@@ -371,6 +394,7 @@ export default {
       fullname: null,
       consent: false,
       finish: false,
+      showconsent: false,
       questions: [
         {
           question: "Was möchtest du umsetzen?",
@@ -730,6 +754,42 @@ textarea {
 
 #define{
   margin-bottom: 0.5em;
+}
+
+#consent-box{
+  box-shadow: 0px 0px 10px #02060e;
+  padding: 1em;
+  margin: 1em;
+  height: auto;
+  width: calc( 100% - 4em);
+  max-width: calc( 1100px - 4em );
+  max-height: calc( 100vh - 10em);
+  left: calc( 50% - 550px );
+  top: 5em;
+  border-radius: 10px;
+  background-color: white;
+  position: fixed;
+
+  z-index: 9999;
+  color: black;
+}
+
+.blackbutton{
+  margin-top: 1em;
+  color: black;
+  border-color: black;
+}
+
+@media screen and (max-width: 1100px) {
+#consent-box{
+  height: auto;
+overflow: scroll;
+overflow-x: hidden;
+right: 0;
+  left: 0;
+  top: 5em;
+
+}
 }
 
 @media screen and (max-width: 768px) {

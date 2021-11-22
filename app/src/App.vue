@@ -268,6 +268,11 @@ button .material-icons{
 
 }
 
+.pc{
+  color: #56AFF5
+
+}
+
 .ta-c{
   text-align: center;
 }

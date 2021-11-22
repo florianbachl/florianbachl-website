@@ -8,6 +8,8 @@ import contact from '@/views/contact'
 import quiz from '@/views/quiz'
 import projects from '@/views/projects'
 import about from '@/views/about'
+import legal from '@/views/legal'
+import dataprotection from '@/views/dataprotection'
 
 import { store } from '@/store/index'
 
@@ -63,6 +65,16 @@ const routes = [
     name: 'dashboard',
     component: dashboard ,
     beforeEnter: requireAuth,
+  },
+  {
+    path: '/legal',
+    name: 'legal',
+    component: legal ,
+  },
+  {
+    path: '/dataprotection',
+    name: 'dataprotection',
+    component: dataprotection ,
   },
   ]
 

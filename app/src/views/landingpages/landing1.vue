@@ -502,5 +502,9 @@ export default {
 .margin-20{
   margin: 10px;
 }
+
+#mysection{
+  margin-bottom: 0px;
+}
 }
 </style>

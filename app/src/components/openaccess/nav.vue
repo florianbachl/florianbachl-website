@@ -1,5 +1,5 @@
 <template>
-  <div id="nav" class="white">
+  <div id="nav" :class="[isLogoWhite ? '' : 'white']">
     <div class="margin-0 fb fb-fd-r fb-ai-c fb-jc-sb ">
       <span class="fb fb-fd-r fb-ai-c fb-jc-fs">
         <Logo></Logo>
@@ -88,10 +88,12 @@ export default {
 #nav {
   position: fixed;
   left: 0;
+
   right: 0;
   padding: 10px;
-  width: 100%;
+  z-index: 10000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s;
 }
 
   .onlyondesktop {
@@ -149,6 +151,10 @@ export default {
   padding: 8px 14px;
 }
 
+a{
+  color: black
+}
+
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .margin-0 {
     margin: 0px 1em;
@@ -159,6 +165,10 @@ export default {
 @media screen and (max-width: 768px) {
   #nav {
     margin: 0px;
+  }
+  #nav .margin-0{
+    margin: 0px;
+    max-width: calc( 100% - 20px );
   }
 
   .onlyondesktop {
