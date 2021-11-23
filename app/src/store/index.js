@@ -5,17 +5,38 @@ import { signingout } from '@/firestore/auth';
 import { isLoggedIn } from '@/firestore/auth';
 import { blogentries } from './modules/blogentries';
 
-
+const cookieArray = {
+  essential: [
+    {
+      name: "florianbachl-essential",
+      value: "Essential",
+      description: "Essentielle gschicht halt",
+      expiry: "12m",
+    },
+  ],
+  nonessential: [
+    {
+      name: "florianbachl-test",
+      value: "BlaBla",
+      description: "Nicht essentielle",
+      expiry: "12m",
+      allowed: true,
+    },
+  ],
+}
 
 
 export const store = createStore({
   modules: {
     blogentries: blogentries,
   },
+
   state() {
     return {
       user: null,
-      popup: {  
+      cookiesaccepted: false,
+      cookieArray: JSON.parse(JSON.stringify(cookieArray)),
+      popup: {
         name: null,
         editid: null,
         statedata: null,
@@ -30,20 +51,24 @@ export const store = createStore({
     };
   },
   mutations: {
-    submit(state){
+    submit(state) {
       state.submitting = true
     },
-    setExpanded(state,payload){
+    setExpanded(state, payload) {
       state.isexpanded = payload
     },
-    setLogoWhite(state,payload){
+    setLogoWhite(state, payload) {
       state.whitelogobool = payload
     },
-    setLoading(state,payload){
+    setLoading(state, payload) {
       state.isLoading = payload
     },
-    resetPopup(state){
-      state.popup = {  
+    setCookieConsent(state, payload) {
+      state.cookiesaccepted = payload
+    },
+    
+    resetPopup(state) {
+      state.popup = {
         name: null,
         editid: null,
         statedata: null,
@@ -54,28 +79,31 @@ export const store = createStore({
       state.isLoading = false
 
     },
-    setPopup(state, payload){
-      if(payload.name && payload.tabs.length != 0){
-        state.popup= payload
-
+    setPopup(state, payload) {
+      if (payload.name && payload.tabs.length != 0) {
+        state.popup = payload
         state.isPopupActive = true
       }
 
-      
+
     },
 
     signin(state, obj) {
       signingin(obj.email, obj.password)
         .then((user) => {
           state.user = user;
-         // console.log(state.user);
+          // console.log(state.user);
         })
-      
+
     },
     signout() {
 
       signingout()
     },
+    resetCookies(state){
+      console.log(cookieArray)
+      state.cookieArray = cookieArray
+    }
 
   },
   getters: {
@@ -85,62 +113,78 @@ export const store = createStore({
     isLogoWhite(state) {
       return state.whitelogobool;
     },
-    isExpanded(state){
+    isExpanded(state) {
       return state.isexpanded;
     },
-    isLoading(state){
+    isLoading(state) {
       return state.isLoading
     },
-    isSubmitting(state){
+    isSubmitting(state) {
       return state.submitting
     },
     isLoggedIn() {
       return isLoggedIn()
     },
-    getPopup(state){
+    getPopup(state) {
       return state.popup
     },
-    getPopupName(state){
+    getPopupName(state) {
       return state.popup.name
     },
-    isPopupActive(state){
+    isPopupActive(state) {
       return state.isPopupActive
+    },
+    getCookieConsent(state) {
+      console.log(state.cookiesaccepted)
+      return state.cookiesaccepted
+    },
+    getCookies(state){
+      return state.cookieArray
     }
   },
   actions: {
     async signIn(context, payload) {
       await context.commit('signin', payload);
     },
-    async submit(context){
+    async submit(context) {
       await context.commit('submit');
     },
     async setLoading(context, payload) {
       await context.commit('setLoading', payload);
     },
-    async setPopup(context, payload){
+    async setPopup(context, payload) {
       await context.commit('setPopup', payload);
     },
-    async setLogoWhite(context, payload){
+    async setLogoWhite(context, payload) {
       await context.commit('setLogoWhite', payload);
     },
-    async setExpanded(context, payload){
+    async setExpanded(context, payload) {
       await context.commit('setExpanded', payload);
     },
-    async resetPopup(context){
+    async resetPopup(context) {
       await context.commit('resetPopup');
     },
-    async getChildren(context, payload){
+    async setCookieConsent(context, payload) {
+      await context.commit('setCookieConsent', payload);
+    },
+    async initCookies(context) {
+      await context.commit('initCookies');
+    },
+    async resetCookies(context) {
+      await context.commit('resetCookies');
+    },
+    async getChildren(context, payload) {
       let temp = []
       for (let g in payload.response) {
         let arr = {}
         let arr2 = {}
         for (let c in payload.payload.retrieveChildren) {
-  
+
           await retrieveDoc({
             collection: payload.payload.retrieveChildren[c].collection,
             id: payload.response[g].data()[payload.payload.retrieveChildren[c].name]
           }).then(async function (responseinner) {
-            
+
             arr[payload.payload.retrieveChildren[c].name] = {}
             arr[payload.payload.retrieveChildren[c].name] = {
               id: responseinner.id,
@@ -168,37 +212,37 @@ export const store = createStore({
           ...arr,
           ...arr2
         }
-        if(payload.singleentry){
-          temp =varu
-        }else{
+        if (payload.singleentry) {
+          temp = varu
+        } else {
           temp.push(varu)
 
         }
-        
+
       }
       return temp
     },
-    async retrieveEntries(context, payload) {   
+    async retrieveEntries(context, payload) {
       let val = await retrieveCollection({
         collection: payload.collection,
         conditions: payload.conditions
       }).then(async function (response) {
         let temp = []
-        temp = await context.dispatch('getChildren', {payload: payload, response: response.docs});
-        if(payload.setFunction){
+        temp = await context.dispatch('getChildren', { payload: payload, response: response.docs });
+        if (payload.setFunction) {
           context.commit(payload.setFunction, temp);
         }
-        return temp  
+        return temp
       })
-      return val  
+      return val
     },
     async retrieveEntry(context, payload) {
       let val = await retrieveDoc({
         collection: payload.collection,
         id: payload.id
       }).then(async function (response) {
-        let temp = await context.dispatch('getChildren', {payload: payload, response: [response], singleentry: true});
-        return temp        
+        let temp = await context.dispatch('getChildren', { payload: payload, response: [response], singleentry: true });
+        return temp
       })
       return val
     },

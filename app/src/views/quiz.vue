@@ -15,96 +15,101 @@
           v-if="!introslide && !lastslide && !finish"
         >
           <div class="width-50">
-            <span id="question-indicator">
-              Frage 0{{ questionsindex + 1 }} / 0{{ questions.length }}
-            </span>
-            <h2 class="fat">{{ questions[questionsindex].question }}</h2>
-            <div id="quiz-buttons">
-              <span
-                v-if="questions[questionsindex].input"
-                class="fb fb-fd-r fb-jc-c fb-ai-fs"
-              >
-                <input
-                  type="number"
-                  @input="checkvalidity()"
-                  class=""
-                  v-model="questions[questionsindex].text"
-                /><span id="currency">€</span>
-              </span>
-              <div
-                class="vertical-line"
-                v-if="questions[questionsindex].input"
-              ></div>
-              <div v-if="questions[questionsindex].textarea" class="area">
-                <textarea
-                  id="scrollbar"
-                  @input="checkvalidity()"
-                  v-model="questions[questionsindex].text"
-                />
-              </div>
+            <transition name="bounce">
+              <span v-if="!istransitioning">
+                <span id="question-indicator">
+                  Frage 0{{ questionsindex + 1 }} / 0{{ questions.length }}
+                </span>
+                <h2 class="fat">{{ questions[questionsindex].question }}</h2>
+                <div id="quiz-buttons">
+                  <span
+                    v-if="questions[questionsindex].input"
+                    class="fb fb-fd-r fb-jc-c fb-ai-fs"
+                  >
+                    <input
+                      type="number"
+                      @input="checkvalidity()"
+                      class=""
+                      v-model="questions[questionsindex].text"
+                    /><span id="currency">€</span>
+                  </span>
+                  <div
+                    class="vertical-line"
+                    v-if="questions[questionsindex].input"
+                  ></div>
+                  <div v-if="questions[questionsindex].textarea" class="area">
+                    <textarea
+                      id="scrollbar"
+                      @input="checkvalidity()"
+                      v-model="questions[questionsindex].text"
+                    />
+                  </div>
 
-              <div
-                v-if="
-                  questions[questionsindex].input ||
-                  questions[questionsindex].textarea ||
-                  questions[questionsindex].text
-                "
-              >
-                <div class="fb fb-fd-r fb-jc-sb fb-ai-c" id="button-line">
+                  <div
+                    v-if="
+                      questions[questionsindex].input ||
+                      questions[questionsindex].textarea ||
+                      questions[questionsindex].text
+                    "
+                  >
+                    <div class="fb fb-fd-r fb-jc-sb fb-ai-c" id="button-line">
+                      <button
+                        class="sb button-with-icon button-with-icon-and-line"
+                        id="just-icon"
+                        @click="previous()"
+                      >
+                        <span class="material-icons">chevron_left</span>
+                      </button>
+
+                      <button
+                        @click="next()"
+                        :disabled="!questions[questionsindex].proceed"
+                        :class="{ pb: questions[questionsindex].proceed }"
+                      >
+                        Weiter
+                      </button>
+                    </div>
+                  </div>
                   <button
-                    class="sb button-with-icon button-with-icon-and-line"
+                    v-if="questions[questionsindex].answers"
+                    class="sb button-with-icon button-with-icon-and-line f-l"
                     id="just-icon"
                     @click="previous()"
                   >
                     <span class="material-icons">chevron_left</span>
                   </button>
-
-                  <button
-                    @click="next()"
-                    :disabled="!questions[questionsindex].proceed"
-                    :class="{ pb: questions[questionsindex].proceed }"
+                  <span
+                    v-for="(answer, index) in questions[questionsindex].answers"
+                    :key="answer"
+                    class="f-l"
                   >
-                    Weiter
-                  </button>
-                </div>
-              </div>
-              <button
-                v-if="questions[questionsindex].answers"
-                class="sb button-with-icon button-with-icon-and-line f-l"
-                id="just-icon"
-                @click="previous()"
-              >
-                <span class="material-icons">chevron_left</span>
-              </button>
-              <span
-                v-for="(answer, index) in questions[questionsindex].answers"
-                :key="answer"
-                class="f-l"
-              >
-                <div class="surrounding-topdown">
-                  <button
-                    @click="setAnswer(index, questions[questionsindex])"
-                    :class="[
-                      questions[questionsindex].answerchosen == index
-                        ? 'pb'
-                        : 'sb',
-                    ]"
-                  >
-                    {{ answer.answer }}
-                  </button>
+                    <div class="surrounding-topdown">
+                      <button
+                        @click="setAnswer(index, questions[questionsindex])"
+                        :class="[
+                          questions[questionsindex].answerchosen == index
+                            ? 'pb'
+                            : 'sb',
+                        ]"
+                      >
+                        {{ answer.answer }}
+                      </button>
+                    </div>
+                  </span>
                 </div>
               </span>
-            </div>
+            </transition>
           </div>
 
-          <Rocketsvg></Rocketsvg>
+          <Rocketsvg data-aos="fade-left" data-aos-duration="1500"></Rocketsvg>
         </div>
         <div v-if="introslide" class="width-50">
           <h1 id="define">Definiere dein Projekt</h1>
-          <p>Manchmal kann es schwierig sein, in Worte zu fassen,
-          was man benötigt, um ein Problem zu lösen. Unser
-          Quiz hilft dir mit kurzen Fragen, dein Anliegen auf den
-          Punkt zu bringen.</p>
+          <p>
+            Manchmal kann es schwierig sein, in Worte zu fassen, was man
+            benötigt, um ein Problem zu lösen. Unser Quiz hilft dir mit kurzen
+            Fragen, dein Anliegen auf den Punkt zu bringen.
+          </p>
           <button class="introbutton pb button-with-icon" @click="next()">
             Weiter
             <span class="material-icons">arrow_right_alt</span>
@@ -112,62 +117,52 @@
         </div>
         <div v-if="finish">
           <div id="finished" class="ta-c">
-            <Smallrocketsvg></Smallrocketsvg>
+            <Smallrocketsvg
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+              data-aos-delay="300"
+            ></Smallrocketsvg>
             <h1>Quiz Abgeschlossen!</h1>
             <p>
               Vielen Dank!<br />
               Wir kontaktieren dich in Kürze, um einen Termin zu vereinbaren!
             </p>
-            <a :href="'/'"><button class="sb">Startseite</button></a>
+            <router-link to="/"><button class="sb">Startseite</button></router-link>
           </div>
         </div>
         <div v-if="lastslide" class="width-60 margin-0">
           <div v-if="showconsent" id="consent-box">
-            <p>Bitte senden Sie mir Informationen über Aktionen, News und Events zu.
-            Durch Ankreuzen dieses Feldes stimme ich der Verarbeitung nachstehender Daten zu Zwecken des Marketings, 
-            dem Erhalt elektronischer Direktwerbung und personenbezogener Werbeschaltungen durch Florian Bachl Software & Webdesign, 
-            Bäuerlegasse 18/33, 1200 Wien, hello@florianbachl.at auf Grundlage meiner Einwilligung bis auf Widerruf zu.
-            Eine Weitergabe an andere Empfänger ist unzulässig. Es besteht keine Verpflichtung zur Erteilung der Zustimmung.
-            Die Nichterteilung der Zustimmung hätte lediglich zur Folge, dass ich keine Informationen zugesendet bekomme.
-            Ich habe das Recht, die Einwilligung jederzeit durch schriftliche Mitteilung zu widerrufen, 
-            ohne dass die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung berührt wird.
-            Zudem habe ich das Recht auf Auskunft über die betreffenden personenbezogenen Daten sowie auf Berichtigung
-            oder Löschung oder auf Einschränkung der Verarbeitung oder auf Widerspruch gegen die Verarbeitung sowie das Recht
-            auf Datenübertragbarkeit und das Recht zur Beschwerde bei der Aufsichtsbehörde.
-            Mit dem Klick auf "Absenden" stimme ich zu,
-            dass meine Informationen für die Bearbeitung an Mailchimp weitergeleitet werden.
-            <a
-                        href="https://mailchimp.com/legal/terms"
-                        target="_blank"
-                        >Learn more about Mailchimp's privacy practices here.</a
-                      ></p>
-                       <button class="sb blackbutton" @click="showconsent = false">
-            schließen
-          </button>
+            <p>
+              Bitte senden Sie mir Informationen über Aktionen, News und Events
+              zu. Durch Ankreuzen dieses Feldes stimme ich der Verarbeitung
+              nachstehender Daten zu Zwecken des Marketings, dem Erhalt
+              elektronischer Direktwerbung und personenbezogener
+              Werbeschaltungen durch Florian Bachl Software & Webdesign,
+              Bäuerlegasse 18/33, 1200 Wien, hello@florianbachl.at auf Grundlage
+              meiner Einwilligung bis auf Widerruf zu. Eine Weitergabe an andere
+              Empfänger ist unzulässig. Es besteht keine Verpflichtung zur
+              Erteilung der Zustimmung. Die Nichterteilung der Zustimmung hätte
+              lediglich zur Folge, dass ich keine Informationen zugesendet
+              bekomme. Ich habe das Recht, die Einwilligung jederzeit durch
+              schriftliche Mitteilung zu widerrufen, ohne dass die
+              Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf
+              erfolgten Verarbeitung berührt wird. Zudem habe ich das Recht auf
+              Auskunft über die betreffenden personenbezogenen Daten sowie auf
+              Berichtigung oder Löschung oder auf Einschränkung der Verarbeitung
+              oder auf Widerspruch gegen die Verarbeitung sowie das Recht auf
+              Datenübertragbarkeit und das Recht zur Beschwerde bei der
+              Aufsichtsbehörde. Mit dem Klick auf "Absenden" stimme ich zu, dass
+              meine Informationen für die Bearbeitung an Mailchimp
+              weitergeleitet werden.
+              <a href="https://mailchimp.com/legal/terms" target="_blank" rel="noopener"
+                >Learn more about Mailchimp's privacy practices here.</a
+              >
+            </p>
+            <button class="sb blackbutton" @click="showconsent = false">
+              schließen
+            </button>
           </div>
-          <!--
-            Bitte senden Sie mir Informationen über Aktionen, News und Events zu.
-            Durch Ankreuzen dieses Feldes stimme ich der Verarbeitung nachstehender Daten zu Zwecken des Marketings, 
-            dem Erhalt elektronischer Direktwerbung und personenbezogener Werbeschaltungen durch Florian Bachl Software & Webdesign, 
-            Bäuerlegasse 18/33, 1200 Wien, hello@florianbachl.at auf Grundlage meiner Einwilligung bis auf Widerruf zu.
-            Eine Weitergabe an andere Empfänger ist unzulässig. Es besteht keine Verpflichtung zur Erteilung der Zustimmung.
-            Die Nichterteilung der Zustimmung hätte lediglich zur Folge, dass ich keine Informationen zugesendet bekomme.
-            Ich habe das Recht, die Einwilligung jederzeit durch schriftliche Mitteilung zu widerrufen, 
-            ohne dass die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung berührt wird.
-            Zudem habe ich das Recht auf Auskunft über die betreffenden personenbezogenen Daten sowie auf Berichtigung
-            oder Löschung oder auf Einschränkung der Verarbeitung oder auf Widerspruch gegen die Verarbeitung sowie das Recht
-            auf Datenübertragbarkeit und das Recht zur Beschwerde bei der Aufsichtsbehörde.
 
-                  
-                     Mit dem Klick auf "Absenden" stimme ich zu,
-                       dass meine Informationen für die Bearbeitung an Mailchimp weitergeleitet werden.
-                      <a
-                        href="https://mailchimp.com/legal/terms"
-                        target="_blank"
-                        >Learn more about Mailchimp's privacy practices here.</a
-                      >
-                   
-          -->
           <div class="ta-c">
             <h2 class="fat">Fast Fertig!</h2>
             <p>
@@ -185,6 +180,7 @@
               name="mc-embedded-subscribe-form"
               class="validate"
               target="_blank"
+              rel="noopener"
             >
               <div id="mc_embed_signup_scroll" class="width-60 margin-0">
                 <span class="position-abs">
@@ -321,8 +317,12 @@
                     class="checkbox-consent"
                     id="mce-CONSENT-0"
                   /><label for="mce-CONSENT-0"
-                    >Ich habe die <span @click="showconsent = true" class="clickable pc">Datenschutz-Bedingungen</span> gelesen und bin mit
-                    der Datenverarbeitung einverstanden.</label
+                    >Ich habe die
+                    <span @click="showconsent = true" class="clickable pc"
+                      >Datenschutz-Bedingungen</span
+                    >
+                    gelesen und bin mit der Datenverarbeitung
+                    einverstanden.</label
                   >
                 </div>
                 <div id="mce-responses" class="clear">
@@ -395,6 +395,7 @@ export default {
       consent: false,
       finish: false,
       showconsent: false,
+      istransitioning: false,
       questions: [
         {
           question: "Was möchtest du umsetzen?",
@@ -569,6 +570,7 @@ export default {
       }
     },
     previous() {
+      this.istransitioning = true;
       if (this.questionsindex > 0) {
         if (this.lastslide) {
           this.lastslide = false;
@@ -578,8 +580,10 @@ export default {
       } else {
         this.introslide = true;
       }
+      this.istransitioning = false;
     },
     next() {
+      this.istransitioning = true;
       if (!this.introslide) {
         if (this.questionsindex < this.questions.length - 1) {
           this.questionsindex += 1;
@@ -589,11 +593,36 @@ export default {
       } else {
         this.introslide = false;
       }
+      //this.istransitioning = false;
     },
   },
 };
 </script>
 <style scoped>
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s ease-out both;
+}
+
+.bounce-leave-active {
+  animation: bounce-in .5s reverse ease-in both;
+}
+
+.pb {
+  background: linear-gradient(to right, #56aff5 0%, #d726a2 100%);
+}
 .finished {
   background: linear-gradient(0.13turn, #01cfdc 0%, #340a94 100%);
 }
@@ -747,24 +776,24 @@ textarea {
   margin-top: 3em;
 }
 
-.position-abs{
+.position-abs {
   position: absolute;
   visibility: hidden;
 }
 
-#define{
+#define {
   margin-bottom: 0.5em;
 }
 
-#consent-box{
+#consent-box {
   box-shadow: 0px 0px 10px #02060e;
   padding: 1em;
   margin: 1em;
   height: auto;
-  width: calc( 100% - 4em);
-  max-width: calc( 1100px - 4em );
-  max-height: calc( 100vh - 10em);
-  left: calc( 50% - 550px );
+  width: calc(100% - 4em);
+  max-width: calc(1100px - 4em);
+  max-height: calc(100vh - 10em);
+  left: calc(50% - 550px);
   top: 5em;
   border-radius: 10px;
   background-color: white;
@@ -774,22 +803,21 @@ textarea {
   color: black;
 }
 
-.blackbutton{
+.blackbutton {
   margin-top: 1em;
   color: black;
   border-color: black;
 }
 
 @media screen and (max-width: 1100px) {
-#consent-box{
-  height: auto;
-overflow: scroll;
-overflow-x: hidden;
-right: 0;
-  left: 0;
-  top: 5em;
-
-}
+  #consent-box {
+    height: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    right: 0;
+    left: 0;
+    top: 5em;
+  }
 }
 
 @media screen and (max-width: 768px) {

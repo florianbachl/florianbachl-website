@@ -5,17 +5,20 @@
     @click="setExpanded"
         />
         <Footer></Footer>
+        <Cookieconsent></Cookieconsent>
         </span>
 </template>
 
 <script>
 import Footer from './components/openaccess/footer'
 import Nav from './components/openaccess/nav'
+import Cookieconsent from './components/cookies/cookieconsent'
 export default {
   name: 'App',
   components:{
     Footer,
-    Nav
+    Nav,
+    Cookieconsent
   },
   created(){
     console.log("I do")
@@ -38,11 +41,16 @@ html {
   height: 100%;
 }
 
+.blue-t{
+  color:#56AFF5 ;
+}
+
 * {
   padding: 0px;
   margin: 0px;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
+  font-display: swap;
 }
 
 .margin-0{
@@ -190,19 +198,19 @@ a{
 
 
 #twitter {
-  background-image: url("assets/logos/twitter.png");
+  background-image: url("assets/logos/twitter.webp");
 }
 
 #facebook {
-  background-image: url("assets/logos/facebook.png");
+  background-image: url("assets/logos/facebook.webp");
 }
 
 #linkedin {
-  background-image: url("assets/logos/linkedin.png");
+  background-image: url("assets/logos/linkedin.webp");
 }
 
 #instagram {
-  background-image: url("assets/logos/instagram.png");
+  background-image: url("assets/logos/instagram.webp");
 }
 .margin-20{
   margin: 20px;
@@ -264,7 +272,7 @@ button .material-icons{
 }
 
 .pb {
-  background: linear-gradient(to right, #340a94 0%, #01CFDC 100%)
+  background: linear-gradient(to right, #340a94 0%, #56AFF5 50%, #D726A2 100%)
 
 }
 

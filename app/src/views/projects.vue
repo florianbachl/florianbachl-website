@@ -1,8 +1,8 @@
 <template>
   <div id="projects" class="margin-0">
-    <div id="project-header">
-      <h1 class="veryfat">Wilkommen im Projekt-Portfolio</h1>
-      <h3>Hier findest du aktuelle und vergangene Projekte, die ich für meine
+    <div id="project-header" >
+      <h1 class="veryfat" data-aos="fade-left" data-aos-duration="1500">Wilkommen im Projekt-Portfolio</h1>
+      <h3 data-aos="fade-left"  data-aos-duration="1500" data-aos-delay="300">Hier findest du aktuelle und vergangene Projekte, die ich für meine
 Kunden umsetzen durfte</h3>
     </div>
     <span v-if="window.width > 450">
@@ -10,6 +10,7 @@ Kunden umsetzen durfte</h3>
         v-for="project in projects"
         :key="project.name"
         class="grey1 project"
+         data-aos="fade-up"  data-aos-duration="1500" 
         @mouseenter="sethover(project, true)"
         @mouseleave="sethover(project, false)"
       >
@@ -18,7 +19,7 @@ Kunden umsetzen durfte</h3>
             <div v-if="project.hoverbool" id="expand-text">
               <h2>{{ project.name }}</h2>
               <p>{{ project.text }}</p>
-              <a :href="project.link" target="_blank"
+              <a :href="project.link" target="_blank" rel="noopener"
                 ><button class="pb button-with-icon">
                   Zur Website
                   <span class="material-icons">arrow_right_alt</span>
@@ -40,6 +41,7 @@ Kunden umsetzen durfte</h3>
     <span v-else>
       <div
         v-for="project in projects"
+        data-aos="fade-up"  data-aos-duration="1500" 
         :key="project.name"
         class="grey1 project-mobile"
       >
@@ -54,7 +56,7 @@ Kunden umsetzen durfte</h3>
           <div class="expand-text-mobile">
             <h2>{{ project.name }}</h2>
             <p>{{ project.text }}</p>
-            <a :href="project.link" target="_blank"
+            <a :href="project.link" target="_blank" rel="noopener"
               ><button class="pb button-with-icon">
                 Zur Website
                 <span class="material-icons">arrow_right_alt</span>
@@ -82,21 +84,21 @@ export default {
           text: "Cloudanwendung für gesamte interne Organisation, Social Media",
           hoverbool: false,
           link: "//www.bachl-nachhilfe.at",
-          img: "bachlnachhilfe.png",
+          img: "bachlnachhilfe.webp",
         },
         {
           name: "Sea Fun Project",
           text: "Website",
           hoverbool: false,
           link: "//www.seafunproject.com",
-          img: "seafunproject.png",
+          img: "seafunproject.webp",
         },
         {
           name: "The Noize",
           text: "Website, Youtube, Social Media",
           hoverbool: false,
           link: "//www.thenoize.at",
-          img: "thenoize.png",
+          img: "thenoize.webp",
         },
       ],
     };

@@ -5,11 +5,14 @@ import { store } from './store/index'
 import Particles from "particles.vue3";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const app = createApp(App)
 
 
 app.use(store);
+app.use(AOS.init());
 app.use(router);
 app.use(Particles);
 app.use(VueAxios, axios)

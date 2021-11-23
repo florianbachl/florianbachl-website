@@ -1,15 +1,16 @@
 <template>
-  <div id="nav" :class="[isLogoWhite ? '' : 'white']">
+  <div id="nav" :class="[isLogoWhite ? 'white-t' : 'white ']">
     <div class="margin-0 fb fb-fd-r fb-ai-c fb-jc-sb ">
-      <span class="fb fb-fd-r fb-ai-c fb-jc-fs">
-        <Logo></Logo>
-        <a :href="'/quiz'"><p class="clickable onlyondesktop">Quiz</p></a>
-        <a :href="'/projects'"
-          ><p class="clickable onlyondesktop">Projekte</p></a
-        >
-        <a :href="'/contact'"><p class="clickable onlyondesktop ">Kontakt</p></a>
+      <span class="fb fb-fd-r fb-ai-c fb-jc-fs" >
+        <Logo>Logo</Logo>
+        <router-link to="/quiz">
+        <p class="clickable onlyondesktop" :class="[isLogoWhite ? 'white-t' : 'white ']">Quiz</p>
+        </router-link>
+        <router-link to="/projects">
+        <p class="clickable onlyondesktop" :class="[isLogoWhite ? 'white-t' : 'white ']">Projekte</p>
+        </router-link>
       </span>
-      <a :href="'/contact'"><button class="sb blackbutton onlyondesktop">Kontakt aufnehmen</button></a>
+      <router-link to="/contact"><button :class="[isLogoWhite ? 'whitebutton' : 'blackbutton ']" class="sb onlyondesktop">Kontakt aufnehmen</button></router-link>
       <span
         class="material-icons clickable"
         id="hamburger"
@@ -24,15 +25,17 @@
         <span class="material-icons clickable" @click="setExpanded(false)"
           >arrow_right_alt</span
         >
-        <a :href="'/login'"><p class="hamburger-gradient">Login</p></a>
+
+        <router-link to="/login">
+        <p class="hamburger-gradient">Login</p></router-link>
       </div>
       <div id="menu-items">
-        <a :href="'/quiz'"><p class="clickable">Quiz</p></a>
-        <a :href="'/projects'"><p class="clickable">Projekte</p></a>
-        <a :href="'/contact'"><p class="clickable">Kontakt</p></a>
+       <router-link to="/quiz"><p class="clickable">Quiz</p></router-link>
+        <router-link to="/projects"><p class="clickable">Projekte</p></router-link>
+        <router-link to="/contact"><p class="clickable">Kontakt</p></router-link>
       </div>
       <div>
-        <a :href="'/contact'"><button class="pb">Kontakt aufnehmen</button></a>
+         <router-link to="/contact"><button class="pb">Kontakt aufnehmen</button></router-link>
         <span class="fb fb-fd-r fb-jc-fs fb-ai-c" id="social-icons-menu">
           <a
             href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
@@ -148,6 +151,11 @@ export default {
 .blackbutton{
   color: black;
   border: 2px solid black;
+  padding: 8px 14px;
+}
+
+.whitebutton{
+
   padding: 8px 14px;
 }
 

@@ -11,6 +11,7 @@ import about from '@/views/about'
 import legal from '@/views/legal'
 import dataprotection from '@/views/dataprotection'
 
+
 import { store } from '@/store/index'
 
 async function requireAuth(to, from, next) {

@@ -1,21 +1,21 @@
 <template>
   <div id="landing1" class="grey1">
     <div id="banner-content" class="fb fb-fd-r fb-ai-c fb-jc-sb">
-      <div class="side">
+      <div class="side" data-aos="fade-right" data-aos-duration="1500">
         <h1 class="veryfat">Digitale Lösungen für dein Unternehmen</h1>
         <h2>Professionelle Applikationen und Webdesign für die Zukunft</h2>
-         <a :href="'/contact'"
-          ><button class="pb">Jetzt Kontaktieren</button></a>
+         <router-link to="/quiz">
+          <button class="pb">Zu meinem Projekt</button></router-link>
       </div>
 
       <Landingsvg></Landingsvg>
     </div>
 
     <div id="content-landing">
-      <div id="service-banner">
+      <div id="service-banner" >
         <div class="fb fb-fd-r fb-jc-c fb-ai-fs">
-          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
-            <Smallwebsitesvg></Smallwebsitesvg>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <Smallwebsitesvg data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600"></Smallwebsitesvg>
             <span
               ><h3 class="fat">Websites & Landingpages</h3>
               <p>
@@ -24,8 +24,8 @@
               </p>
             </span>
           </div>
-          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
-            <Pcsvg></Pcsvg>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <Pcsvg data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="900"></Pcsvg>
             <span
               ><h3 class="fat">Webapps & Desktopapps</h3>
               <p>
@@ -34,8 +34,8 @@
               </p>
               </span>
           </div>
-          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c">
-            <Cloudsvg></Cloudsvg>
+          <div class="service-container white fb fb-fd-c fb-ai-c fb-jc-c" data-aos="fade-up" data-aos-duration="800" data-aos-delay="700">
+            <Cloudsvg data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="1100"></Cloudsvg>
             <span
               ><h3 class="fat">Cloud-Anwendungen</h3>
               <p>
@@ -48,9 +48,9 @@
       </div>
 
       <div class="white-section fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
-        <Websitesvg></Websitesvg>
+        <Websitesvg data-aos="fade-right" data-aos-duration="1500"></Websitesvg>
 
-        <div class="side">
+        <div class="side" data-aos="fade-up" data-aos-duration="700">
           <h2 class="fat">
             Erfolgreiches Webdesign liegt in der Liebe zum Detail
           </h2>
@@ -59,23 +59,23 @@
             Rücke deine Marke in ein modernes Licht mit professionellem und maßgeschneidertem Webdesign, das intuitiv und einfach zu benutzen ist.
             Vom Erstgespräch bis hin zur vollständigen Anwendung wickle ich dein Projekt mit größter Sorgfalt ab.
           </p>
-          <a :href="'/projects'"> <button class="pb">Projekte Ansehen</button></a>
+          <router-link to="/projects"><button class="pb">Umgesetzte Projekte ansehen</button></router-link>
         </div>
       </div>
       <div class="white-section scnd fb fb-fd-r fb-ai-c fb-jc-sb margin-0">
-        <div class="side">
+        <div class="side" data-aos="fade-up" data-aos-duration="700">
           <h2 class="fat">Intuitive Anwendungen als Lösung für komplexe Probleme</h2>
           <p>
             Automatisiere die Probleme, die dir und deinen Mitarbeitern täglich Zeit kosten. 
             Durch effiziente Projektplanung und Zieldefinition werden vielschichtige Aufgaben zuerst klar strukturiert und dann automatisiert.
             Mit modernsten Technologien setze ich Full-Stack-Anwendungen, Web- und Cloudapps um und lege dabei immer den Fokus auf die Usability des Endproduktes.
           </p>
-           <a :href="'/contact'"><button class="pb">Jetzt Kontaktieren</button></a>
+           <router-link to="/contact"><button class="pb">Jetzt Kontaktieren</button></router-link>
         </div>
-        <Automationsvg></Automationsvg>
+        <Automationsvg data-aos="fade-left" data-aos-duration="1500"></Automationsvg>
       </div>
 
-      <div class="banner-inner">
+      <div class="banner-inner" data-aos="zoom-in-up" data-aos-duration="1500">
         <div class="white margin-0 customer-section">
           <h2 class="fat">Das sagen andere Kunden</h2>
           <span class="fb fb-fd-r fb-ai-c fb-jc-sb">
@@ -119,8 +119,8 @@
         </div>
       </div>
 
-      <div class="banner-inner margin-0" id="mysection">
-        <img src="@/assets/team/me.jpg" alt="profilepic" id="myimg" />
+      <div class="banner-inner margin-0" id="mysection" data-aos="zoom-in-up" data-aos-duration="1500">
+        <img src="@/assets/team/me.webp" alt="profilepic" id="myimg" />
         <h2>Hey, ich bin Florian!</h2>
         <p>
           Seit meinem Abschluss als B.Sc. an der Fachhochschule Hagenberg durfte ich 
@@ -133,7 +133,7 @@
           Ob Mitarbeiter in einem Unternehmen oder potentieller Kunde, jeder Nutzer verdient 
           eine optimierte und einfach zu bedienende Oberfläche. 
         </p>
-        <h4>Florian Bachl, B.Sc.</h4>
+        <h3>Florian Bachl, B.Sc.</h3>
         <p>Software & Webdesign</p>
       </div>
     </div>
@@ -162,7 +162,7 @@ export default {
           customer: "Brigitte Bachl",
           position: "Geschäftsführerin Bachl Nachhilfe",
           text: "Zuerst dachte ich, das man das alles nie in nur einem Programm unterbringen könne. Seit wir das neue Organisationsprogramm verwenden, hat sich mein Organisationsaufwand um 90% verringert.",
-          img: "bachl.png",
+          img: "bachl.webp",
         },
       ],
     };
@@ -187,14 +187,14 @@ export default {
         .getElementById("rating").addEventListener('touchstart', (event)=> {
     this.touchstartX = event.changedTouches[0].screenX;
      this.touchstartY = event.changedTouches[0].screenY;
-}, false);
+}, false,{passive: true});
 
     document
         .getElementById("rating").addEventListener('touchend', (event)=> {
          this.touchendX = event.changedTouches[0].screenX;
          this.touchendY = event.changedTouches[0].screenY;
         this.handleGesture();
-    }, false);
+    }, false,{passive: true});
   },
   watch: {
   },

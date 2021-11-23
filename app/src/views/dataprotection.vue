@@ -138,7 +138,7 @@
       bereits erteilte Einwilligung zur Erfassung Ihrer Nutzerdaten durch
       Facebook Pixel widerrufen, indem Sie auf folgenden Link klicken. Es wird
       ein Opt-Out-Cookie gesetzt, das die Erfassung Ihrer Daten bei weiteren
-      Besuchen dieser Website verhindert: Widerruf der Einwilligung
+      Besuchen dieser Website verhindert: <span class="clickable blue-t" @click="removeCookies">Widerruf der Einwilligung</span>
     </p>
 
     <h2>Ihre Rechte</h2>
@@ -148,7 +148,7 @@
       Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass
       die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre
       datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden
-      sind, können Sie sich bei uns [E-Mail-Adresse abgeben] oder der
+      sind, können Sie sich bei uns oder der
       Datenschutzbehörde beschweren.
     </p>
 
@@ -172,7 +172,11 @@ export default {
   components: {},
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+    removeCookies(){
+      this.$store.dispatch("setCookieConsent", false)
+    }
+  },
 };
 </script>
 <style scoped>

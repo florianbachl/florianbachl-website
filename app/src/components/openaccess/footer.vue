@@ -3,13 +3,13 @@
     <div id="bottom-cta" v-if="$route.name != 'quiz'">
       <div class="margin-0 white-t fb fb-fd-r fb-jc-sb fb-ai-c">
         <div>
-           <h2>Nicht sicher, wonach du suchst?</h2>
+           <h4>Nicht sicher, wonach du suchst?</h4>
         <p>Mach das Quiz und definiere dein Problem!</p>
-        <a :href="'/quiz'"
-          ><button class="sb button-with-icon button-with-icon-and-line">
+        <router-link to="/quiz">
+          <button class="sb button-with-icon button-with-icon-and-line">
             Quiz starten
             <span class="material-icons">arrow_right_alt</span>
-          </button></a>
+          </button></router-link >
         </div>
         <Smallrocketsvg></Smallrocketsvg>
        
@@ -23,16 +23,16 @@
       >
         <div class="bottom-container">
           <h4><span class="fat">Sitemap</span></h4>
-          <a :href="'/'"><p class="clickable">Startseite</p></a>
-          <a :href="'/quiz'"><p class="clickable">Quiz</p></a>
-          <a :href="'/projects'"><p class="clickable">Projekte</p></a>
-          <a :href="'/contact'"><p class="clickable">Kontakt</p></a>
+          <router-link to="/"><p class="clickable">Startseite</p></router-link >
+          <router-link to="/quiz"><p class="clickable">Quiz</p></router-link >
+          <router-link to="/projects"><p class="clickable">Projekte</p></router-link >
+          <router-link to="/contact"><p class="clickable">Kontakt</p></router-link >
         </div>
         <div class="bottom-container">
           <h4><span class="fat">Rechtliches</span></h4>
-          <a :href="'/legal'"><p class="clickable">Impressum</p></a>
-          <a :href="'/dataprotection'"
-            ><p class="clickable">Datenschutzerklärung</p></a
+          <router-link to="/legal"><p class="clickable">Impressum</p></router-link >
+          <router-link to="/dataprotection"
+            ><p class="clickable">Datenschutzerklärung</p></router-link 
           >
         </div>
         <div class="bottom-container">
@@ -58,22 +58,26 @@
             <a
               href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
               target="_blank"
-              ><div class="social-icon grey1 clickable" id="twitter"></div
+              rel="noopener"
+              ><div class="social-icon grey1 clickable" id="twitter" role="img" aria-label="social-twitter"></div
             ></a>
             <a
               href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
               target="_blank"
-              ><div class="social-icon grey1 clickable" id="instagram"></div
+              rel="noopener"
+              ><div class="social-icon grey1 clickable" id="instagram" role="img" aria-label="social-instagram"></div
             ></a>
             <a
               href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
               target="_blank"
-              ><div class="social-icon grey1 clickable" id="facebook"></div
+              rel="noopener"
+              ><div class="social-icon grey1 clickable" id="facebook" role="img" aria-label="social-facebook"></div
             ></a>
             <a
               href="//www.linkedin.com/in/florian-bachl-b-sc-00163a222/"
               target="_blank"
-              ><div class="social-icon grey1 clickable" id="linkedin"></div
+              rel="noopener"
+              ><div class="social-icon grey1 clickable" id="linkedin" role="img" aria-label="social-linkedin"></div
             ></a>
           </span>
         </div>
@@ -110,8 +114,9 @@ export default {
   text-align: left;
 }
 
-#bottom-cta h2 {
+#bottom-cta h4 {
   margin: 20px;
+  font-size: 2em;
   margin-left: 0px;
 }
 
@@ -188,6 +193,10 @@ a {
 @media screen and (max-width: 768px) {
   .bottom-container {
     width: unset;
+  }
+  .bottom-container p{
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
   }
   #bottom-display {
     flex-direction: column;
