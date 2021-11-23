@@ -213,12 +213,11 @@ h2{
 #cookie-popup {
   position: fixed;
   background-color: white;
-  left: 50%;
+  left: calc( 50% - 2em );
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.2);
   width: 40em;
-
   padding: 2em;
   margin: 2em;
   z-index: 10000;
@@ -344,5 +343,25 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+#cookie-popup {
+  width: calc(100% - 8em);
+  max-width: unset;
+  max-height: unset;
+}
+}
+
+@media screen and (max-width: 450px) {
+#cookie-bar .fb-fd-r{
+    flex-direction: column;
+}
+
+
+#cookie-bar .pb, .sb{
+    margin: 0px;
+    margin-top: 1em;
+}
 }
 </style>

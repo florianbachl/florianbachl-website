@@ -50,6 +50,9 @@ export default {
   computed: {},
   watch: {},
   methods: {},
+  mounted(){
+    window.scrollTo(0, 0)
+  },
 };
 </script>
 <style scoped>

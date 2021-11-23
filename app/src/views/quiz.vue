@@ -516,6 +516,9 @@ export default {
       this.checkForSubmit();
     },
   },
+  mounted(){
+    window.scrollTo(0, 0)
+  },
   methods: {
     checkForSubmit() {
       if (this.email && this.fullname && this.phone && this.consent) {

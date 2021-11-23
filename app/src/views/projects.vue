@@ -108,6 +108,9 @@ export default {
     window.addEventListener("resize", this.handleResize);
     this.handleResize();
   },
+  mounted(){
+    window.scrollTo(0, 0)
+  },
   unmounted() {
     window.removeEventListener("resize", this.handleResize);
   },

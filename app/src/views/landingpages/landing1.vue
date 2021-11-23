@@ -182,7 +182,8 @@ export default {
 
   
   },
-  mounted() {
+  mounted(){
+    window.scrollTo(0, 0)
       document
         .getElementById("rating").addEventListener('touchstart', (event)=> {
     this.touchstartX = event.changedTouches[0].screenX;
