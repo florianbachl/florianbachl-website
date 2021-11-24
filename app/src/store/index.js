@@ -5,23 +5,26 @@ import { signingout } from '@/firestore/auth';
 import { isLoggedIn } from '@/firestore/auth';
 import { blogentries } from './modules/blogentries';
 
+
+/*
+ {
+      name: "florianbachl-test",
+      value: "BlaBla",
+      description: "Nicht essentielles Cookie, das nur ",
+      expiry: "12m",
+      allowed: true,
+    },
+*/ 
 const cookieArray = {
   essential: [
     {
       name: "florianbachl-essential",
       value: "Essential",
-      description: "Essentielle gschicht halt",
+      description: "Essentielles Cookie für die korrekte Funtion der Seite",
       expiry: "12m",
     },
   ],
   nonessential: [
-    {
-      name: "florianbachl-test",
-      value: "BlaBla",
-      description: "Nicht essentielle",
-      expiry: "12m",
-      allowed: true,
-    },
   ],
 }
 

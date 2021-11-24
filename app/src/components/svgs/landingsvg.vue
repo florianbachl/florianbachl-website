@@ -1,7 +1,7 @@
 <template>
 <div id="landingsvg">
 
-<svg  data-aos="fade-left" data-aos-duration="2000" data-name="landing" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
+<svg  data-aos="fade-up" data-aos-duration="2000" data-name="landing" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
   <defs>
     <linearGradient id="linear-gradient-landing" x1="88.86898" y1="732.56509" x2="896.21014" y2="732.56509" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#c3e0fc"/>

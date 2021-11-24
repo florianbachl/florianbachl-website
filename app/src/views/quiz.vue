@@ -16,7 +16,7 @@
         >
           <div class="width-50">
             <transition name="bounce">
-              <span v-if="!istransitioning">
+              <div v-if="!istransitioning">
                 <span id="question-indicator">
                   Frage 0{{ questionsindex + 1 }} / 0{{ questions.length }}
                 </span>
@@ -97,7 +97,7 @@
                     </div>
                   </span>
                 </div>
-              </span>
+              </div>
             </transition>
           </div>
 
@@ -596,31 +596,24 @@ export default {
       } else {
         this.introslide = false;
       }
-      //this.istransitioning = false;
+      this.istransitioning = false;
     },
   },
 };
 </script>
 <style scoped>
 
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .bounce-enter-active {
-  animation: bounce-in .5s ease-out both;
+  transition: all 0.5s ease-in;
 }
 
 .bounce-leave-active {
-  animation: bounce-in .5s reverse ease-in both;
+  transition: all 0.4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.bounce-enter-from,
+.bounce-leave-to {
+  transform: translateY(20em);
 }
 
 .pb {

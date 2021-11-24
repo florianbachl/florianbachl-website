@@ -1,8 +1,8 @@
 <template>
-  <div id="projects" class="margin-0">
+  <div id="projects" >
     <div id="project-header" >
-      <h1 class="veryfat" data-aos="fade-left" data-aos-duration="1500">Wilkommen im Projekt-Portfolio</h1>
-      <h3 data-aos="fade-left"  data-aos-duration="1500" data-aos-delay="300">Hier findest du aktuelle und vergangene Projekte, die ich für meine
+      <h1 class="veryfat" data-aos="fade-up" data-aos-duration="1500">Wilkommen im Projekt-Portfolio</h1>
+      <h3 data-aos="fade-up"  data-aos-duration="1500" data-aos-delay="300">Hier findest du aktuelle und vergangene Projekte, die ich für meine
 Kunden umsetzen durfte</h3>
     </div>
     <span v-if="window.width > 450">
@@ -128,6 +128,14 @@ export default {
 };
 </script>
 <style scoped>
+
+#projects{
+    margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 #project-header {
   padding-top: 13em;
 }

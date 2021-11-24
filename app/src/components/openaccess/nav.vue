@@ -20,14 +20,16 @@
         >drag_handle</span
       >
     </div>
+    <transition name="slide-menu">
     <div v-if="isexpanded" id="menu" class="grey1 fb fb-fd-c fb-ai-s fb-jc-sb">
       <div class="fb fb-fd-r fb-ai-c fb-jc-sb">
-        <span class="material-icons clickable" @click="setExpanded(false)"
-          >arrow_right_alt</span
-        >
+       
 
         <router-link to="/login">
-        <p class="hamburger-gradient">Login</p></router-link>
+        <p class="hamburger-gradient">Login</p></router-link> 
+        <span class="material-icons clickable" @click="setExpanded(false)"
+          >close</span
+        >
       </div>
       <div id="menu-items">
        <router-link to="/quiz"><p class="clickable">Quiz</p></router-link>
@@ -60,6 +62,7 @@
         </span>
       </div>
     </div>
+    </transition>
   </div>
 </template>
 
@@ -91,13 +94,28 @@ export default {
 #nav {
   position: fixed;
   left: 0;
-
+  
   right: 0;
   padding: 10px;
   z-index: 10000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: top 0.3s;
 }
+
+
+.slide-menu-enter-active {
+  transition: all 0.2s ease-in;
+}
+
+.slide-menu-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-menu-enter-from,
+.slide-menu-leave-to {
+  transform: translateX(20em);
+}
+
 
   .onlyondesktop {
     margin-left: 2em;
@@ -176,7 +194,7 @@ a{
   }
   #nav .margin-0{
     margin: 0px;
-    max-width: calc( 100% - 20px );
+    max-width: 100%;
   }
 
   .onlyondesktop {

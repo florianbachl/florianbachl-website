@@ -11,7 +11,8 @@
             >close</span
           >
           <h1>Privatsphäre-Einstellungen</h1>
-          <p>
+          <div id="inner-cookies">
+            <p>
             Wir verwenden Cookies, die für den Betrieb unserer Webseite
             notwendig sind und um dir Services anbieten zu können. Zusätzliche
             Cookies werden nur verwendet, wenn du ihnen zustimmst. Diese werden
@@ -20,7 +21,7 @@
             Privatsphäre-Einstellungen jederzeit ändern.
           </p>
           <div id="cookie-container">
-              <h2>Essentielle Cookies</h2>
+              <h2>Immer aktiviert</h2>
             <div
               v-for="cookie in cookieArray.essential"
               :key="cookie.name"
@@ -35,7 +36,8 @@
                 <span class="slider round essential"></span>
               </label>
             </div>
-            <h2>Non-Essentielle Cookies</h2>
+            <h2>Non-Essentiell</h2>
+            <span v-if="cookieArray.nonessential.length < 1">keine</span>
             <div
               v-for="cookie in cookieArray.nonessential"
               :key="cookie.name"
@@ -50,6 +52,7 @@
                 <span class="slider round"></span>
               </label>
             </div>
+          </div>
           </div>
         </span>
 
@@ -97,35 +100,30 @@ export default {
       return this.$store.getters.getCookieConsent;
     },
 
-    cookieArray(){
-        return this.$store.getters.getCookies;
-    }
+    cookieArray() {
+      return this.$store.getters.getCookies;
+    },
   },
   watch: {
-      accepted(){
-          if(!this.accepted){
-            this.removeCookies()
-          } 
+    accepted() {
+      if (!this.accepted) {
+        this.removeCookies();
       }
+    },
   },
   methods: {
-    removeCookies() {
+    async removeCookies() {
       for (let i in this.cookieArray.essential) {
-        this.cookies.remove(
-          this.cookieArray.essential[i].name
-        );
+        this.cookies.remove(this.cookieArray.essential[i].name);
       }
       for (let j in this.cookieArray.nonessential) {
-        this.cookies.remove(
-          this.cookieArray.nonessential[j].name
-        );
+        this.cookies.remove(this.cookieArray.nonessential[j].name);
       }
-      
-      this.$store.dispatch("resetCookies")
-      this.expanded = true
 
+      this.$store.dispatch("resetCookies");
+      this.expanded = true;
     },
-    accept() {
+    async accept() {
       for (let i in this.cookieArray.essential) {
         this.cookies.set(
           this.cookieArray.essential[i].name,
@@ -143,11 +141,10 @@ export default {
         } else if (this.cookies.isKey(this.cookieArray.nonessential[j].name)) {
           this.cookies.remove(this.cookieArray.nonessential[j].name);
         }
-
       }
-      this.$store.dispatch("setCookieConsent", true)
+      this.$store.dispatch("setCookieConsent", true);
     },
-    initCookies() {
+    async initCookies() {
       let hasEssentials = true;
       for (let i in this.cookieArray.essential) {
         if (!this.cookies.isKey(this.cookieArray.essential[i].name)) {
@@ -160,15 +157,14 @@ export default {
             this.cookies.remove(this.cookieArray.nonessential[j].name);
           }
         } else if (hasEssentials) {
-          this.cookieArray.nonessential[j].allowed = false
+          this.cookieArray.nonessential[j].allowed = false;
         }
-
       }
-      this.$store.dispatch("setCookieConsent", hasEssentials)
+      this.$store.dispatch("setCookieConsent", hasEssentials);
     },
   },
   created() {
-      this.initCookies()
+    this.initCookies();
   },
 };
 </script>
@@ -178,42 +174,46 @@ h1 {
   padding-bottom: 0.5em;
   font-size: 1.5em;
 }
-h2{
-    margin-top: 1em;
-    font-size: 1em;
-    font-weight: 500;
+h2 {
+  margin-top: 1em;
+  font-size: 1em;
+  font-weight: 500;
 }
 
-.cookie{
-    background-color: #F5F9FC;
-    margin-bottom: 0.1em;
-    padding:  0.5em 1em;
+.cookie {
+  background-color: #f5f9fc;
+  margin-bottom: 0.1em;
+  padding: 0.5em 1em;
 }
 
-#cookie-container{
-    max-height: 15em;
-    overflow-y: scroll;
-    padding-right: 1em;
-    margin-top: 1em;
+#cookie-container {
+  padding-right: 1em;
+  margin-top: 1em;
 }
 
-#cookie-container::-webkit-scrollbar {
+#inner-cookies{
+  overflow-y: scroll;
+  max-height: 20em;
+}
+
+
+#inner-cookies::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: #F5F9FC; /* or add it to the track */
+  background-color: #f5f9fc; /* or add it to the track */
   border-radius: 10px;
 }
 
 /* Add a thumb */
-#cookie-container::-webkit-scrollbar-thumb {
-    background: #999c9e;
-    border-radius: 10px;
+#inner-cookies::-webkit-scrollbar-thumb {
+  background: #999c9e;
+  border-radius: 10px;
 }
 
 #cookie-popup {
   position: fixed;
   background-color: white;
-  left: calc( 50% - 2em );
+  left: calc(50% - 2em);
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.2);
@@ -222,7 +222,7 @@ h2{
   margin: 2em;
   z-index: 10000;
   max-width: calc(100% - 8em);
-  max-height: calc(100% - 8em);
+  
 }
 .material-icons {
   float: right;
@@ -315,15 +315,15 @@ h2{
 }
 
 input:checked + .slider {
-  background:  #56AFF5;
+  background-color: #56aff5;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #56AFF5;
+  box-shadow: 0 0 1px #56aff5;
 }
 
 input:checked + .essential {
-  background: #999c9e;
+  background-color: #999c9e;
 }
 
 input:focus + .essential {
@@ -346,22 +346,30 @@ input:checked + .slider:before {
 }
 
 @media screen and (max-width: 768px) {
-#cookie-popup {
-  width: calc(100% - 8em);
-  max-width: unset;
-  max-height: unset;
-}
+  #cookie-popup {
+    width: calc(100% - 8em);
+    max-width: unset;
+    max-height: unset;
+  }
 }
 
 @media screen and (max-width: 450px) {
-#cookie-bar .fb-fd-r{
+  #cookie-bar .fb-fd-r {
     flex-direction: column;
+  }
+#inner-cookies{
+  max-height: 22em;
 }
 
+  #cookie-popup {
+    top: calc( 50% - 2em );
+   padding: 1em;
+  }
 
-#cookie-bar .pb, .sb{
+  #cookie-bar .pb,
+  .sb {
     margin: 0px;
     margin-top: 1em;
-}
+  }
 }
 </style>

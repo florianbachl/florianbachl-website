@@ -47,7 +47,7 @@
         Webhosting (com)zur Speicherung von Daten, zur Ausführung der Website
       </li>
       <li>
-        Webanalyse (Facebook Pixel)zur statistischen Auswertung der Nutzung
+        Webanalyse (Facebook Pixel) zur statistischen Auswertung der Nutzung
         unserer Website
       </li>
     </ul>
@@ -60,9 +60,12 @@
       Drittanbietern:
     </p>
     <ul>
+      <li>Keine</li>
+    </ul>
+    <!--<ul>
       <li>Facebook Pixel zur Webanalyse</li>
     </ul>
-
+-->
     <p>
       Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
       werden diese erst nach Einwilligung gestartet
@@ -84,15 +87,21 @@
     </p>
 
     <p></p>
+     <ul>
+      <li>Keine</li>
+    </ul>
+    <!--
     <ul>
       <li>Facebook Pixel zur Webanalyse</li>
-    </ul>
+    </ul>-->
 
     <p>
       Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
       werden diese erst nach Einwilligung gestartet
     </p>
 
+    <span class="clickable blue-t" @click="removeCookies">Widerruf der Einwilligung</span>
+<!--
     <h2>WEBANALYSE</h2>
     <p>
       Zur Weiterentwicklung unserer Website führen wir eine statistische
@@ -140,7 +149,7 @@
       ein Opt-Out-Cookie gesetzt, das die Erfassung Ihrer Daten bei weiteren
       Besuchen dieser Website verhindert: <span class="clickable blue-t" @click="removeCookies">Widerruf der Einwilligung</span>
     </p>
-
+-->
     <h2>Ihre Rechte</h2>
     <p>
       Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die
@@ -201,6 +210,11 @@ li{
     margin: 0px;
   padding: 1em;
   max-width: calc( 100% - 2em);
+}
+}
+@media screen and (max-width: 450px) {
+h1{
+  font-size: 1.5em;
 }
 }
 </style>

@@ -23,6 +23,11 @@ export default {
   created(){
     console.log("I do")
   },
+  watch:{
+    $route (){
+       this.setExpanded()
+    }
+} ,
   methods: {
     setExpanded(){
       this.$store.dispatch('setExpanded', false)
@@ -336,10 +341,17 @@ input:focus {
 }
 
 
+
 @media screen and (max-width: 768px) {
 .margin-0{
   margin: 20px;
   max-width: calc( 100% - 40px);
+}
+}
+
+@media screen and (max-width: 450px) {
+#app{
+  overflow: hidden;
 }
 }
 </style>

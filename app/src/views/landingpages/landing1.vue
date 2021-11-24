@@ -72,7 +72,7 @@
           </p>
            <router-link to="/contact"><button class="pb">Jetzt Kontaktieren</button></router-link>
         </div>
-        <Automationsvg data-aos="fade-left" data-aos-duration="1500"></Automationsvg>
+        <Automationsvg data-aos="fade-right" data-aos-duration="1500"></Automationsvg>
       </div>
 
       <div class="banner-inner" data-aos="zoom-in-up" data-aos-duration="1500">
@@ -188,14 +188,14 @@ export default {
         .getElementById("rating").addEventListener('touchstart', (event)=> {
     this.touchstartX = event.changedTouches[0].screenX;
      this.touchstartY = event.changedTouches[0].screenY;
-}, false,{passive: true});
+}, {passive: true});
 
     document
         .getElementById("rating").addEventListener('touchend', (event)=> {
          this.touchendX = event.changedTouches[0].screenX;
          this.touchendY = event.changedTouches[0].screenY;
         this.handleGesture();
-    }, false,{passive: true});
+    }, {passive: true});
   },
   watch: {
   },
@@ -389,6 +389,7 @@ export default {
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .customer-section, #mysection{
     margin: 0px 1em;
+    margin-top: 3em;
     max-width: calc( 100% - 2em);
   }
 }
