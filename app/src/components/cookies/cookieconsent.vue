@@ -27,10 +27,10 @@
               :key="cookie.name"
               class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
             >
-              <span>
+              <div class="cookie-text">
                 <h3>{{ cookie.name }}</h3>
                 <p>{{ cookie.description }}</p>
-              </span>
+              </div>
               <label class="switch">
                 <input type="checkbox" checked disabled/>
                 <span class="slider round essential"></span>
@@ -43,10 +43,10 @@
               :key="cookie.name"
               class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
             >
-              <span>
+              <div class="cookie-text">
                 <h3>{{ cookie.name }}</h3>
                 <p>{{ cookie.description }}</p>
-              </span>
+              </div>
               <label class="switch">
                 <input type="checkbox" v-model="cookie.allowed"/>
                 <span class="slider round"></span>
@@ -187,13 +187,13 @@ h2 {
 }
 
 #cookie-container {
-  padding-right: 1em;
   margin-top: 1em;
 }
 
 #inner-cookies{
   overflow-y: scroll;
   max-height: 20em;
+  padding-right: 1em;
 }
 
 
@@ -202,6 +202,7 @@ h2 {
   height: 8px;
   background-color: #f5f9fc; /* or add it to the track */
   border-radius: 10px;
+  
 }
 
 /* Add a thumb */
@@ -280,6 +281,7 @@ h2 {
   display: inline-block;
   width: 30px;
   height: 17px;
+  margin-top: 7px;
 }
 
 /* Hide default HTML checkbox */
@@ -345,6 +347,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.cookie-text{
+  max-width: calc( 100% - 30px);
+}
+
 @media screen and (max-width: 768px) {
   #cookie-popup {
     width: calc(100% - 8em);
@@ -362,6 +368,7 @@ input:checked + .slider:before {
 }
 
   #cookie-popup {
+    width: calc(100% - 4em);
     top: calc( 50% - 2em );
    padding: 1em;
   }
