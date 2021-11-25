@@ -4,6 +4,9 @@ import { signingin } from '@/firestore/auth';
 import { signingout } from '@/firestore/auth';
 import { isLoggedIn } from '@/firestore/auth';
 import { blogentries } from './modules/blogentries';
+import { logEvent } from "firebase/analytics";
+import { analytics } from '@/firestore/config';
+
 
 
 /*
@@ -15,6 +18,7 @@ import { blogentries } from './modules/blogentries';
       allowed: true,
     },
 */ 
+
 const cookieArray = {
   essential: [
     {
@@ -38,6 +42,7 @@ export const store = createStore({
     return {
       user: null,
       cookiesaccepted: false,
+      analytics: analytics,
       cookieArray: JSON.parse(JSON.stringify(cookieArray)),
       popup: {
         name: null,
@@ -56,6 +61,9 @@ export const store = createStore({
   mutations: {
     submit(state) {
       state.submitting = true
+    },
+    logAnalyticsEvent(state, payload){
+      logEvent(state.analytics, payload);
     },
     setExpanded(state, payload) {
       state.isexpanded = payload
@@ -95,7 +103,8 @@ export const store = createStore({
       signingin(obj.email, obj.password)
         .then((user) => {
           state.user = user;
-          // console.log(state.user);
+          logEvent(state.analytics, "login");
+          console.log(state.user);
         })
 
     },
@@ -154,6 +163,9 @@ export const store = createStore({
     },
     async setLoading(context, payload) {
       await context.commit('setLoading', payload);
+    },
+    async logAnalyticsEvent(context, payload){
+      await context.commit('logAnalyticsEvent', payload);
     },
     async setPopup(context, payload) {
       await context.commit('setPopup', payload);

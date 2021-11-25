@@ -341,7 +341,6 @@ input:focus {
 }
 
 
-
 @media screen and (max-width: 768px) {
 .margin-0{
   margin: 20px;
