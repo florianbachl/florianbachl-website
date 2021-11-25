@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="'/'" class="clickable">
+    <router-link to="/">
       <div v-if="isLogoWhite" id="logo">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165.459 92.484">
         <title>Logo White</title>
@@ -38,7 +38,7 @@
           />
         </svg>
       </div>
-    </a>
+    </router-link>
   </div>
 </template>
 

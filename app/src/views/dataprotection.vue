@@ -47,7 +47,7 @@
         Webhosting (com)zur Speicherung von Daten, zur Ausführung der Website
       </li>
       <li>
-        Webanalyse (Facebook Pixel) zur statistischen Auswertung der Nutzung
+        Webanalyse (Google Analytics) zur statistischen Auswertung der Nutzung
         unserer Website
       </li>
     </ul>
@@ -55,17 +55,13 @@
     <p>
       Ein Skript ist eine Software, welche Funktionen zur Verfügung stellt,
       Daten verarbeitet und unsere Website an die Services von Drittanbietern
-      wie z.B. die Webanalyse-Produkte Google Analytics und Facebook Pixel
-      anbindet. Zum Betrieb unserer Website verwenden wir Skripte von folgenden
-      Drittanbietern:
+      wie z.B. die Webanalyse-Produkte Google Analytics anbindet. Zum Betrieb
+      unserer Website verwenden wir Skripte von folgenden Drittanbietern:
     </p>
     <ul>
-      <li>Keine</li>
+      <li>Google Analytics zur Webanalyse</li>
     </ul>
-    <!--<ul>
-      <li>Facebook Pixel zur Webanalyse</li>
-    </ul>
--->
+
     <p>
       Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
       werden diese erst nach Einwilligung gestartet
@@ -85,28 +81,20 @@
       eingeschränkt sein. Zum Betrieb unserer Website verwenden wir zudem
       Cookies von folgenden Drittanbietern:
     </p>
-
-    <p></p>
-     <ul>
-      <li>Keine</li>
-    </ul>
-    <!--
     <ul>
-      <li>Facebook Pixel zur Webanalyse</li>
-    </ul>-->
+      <li>Google Analytics zur Webanalyse</li>
+    </ul>
 
     <p>
       Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
-      werden diese erst nach Einwilligung gestartet
+      werden diese erst nach Einwilligung gestartet.
     </p>
 
-    <span class="clickable blue-t" @click="removeCookies">Widerruf der Einwilligung</span>
-<!--
     <h2>WEBANALYSE</h2>
     <p>
       Zur Weiterentwicklung unserer Website führen wir eine statistische
       Auswertung der Benutzung unserer Website mit Hilfe des
-      Webanalyse-Produktes Facebook Pixel durch. So können wir beispielsweise
+      Webanalyse-Produktes Google Analytics durch. So können wir beispielsweise
       erkennen, welche Inhalte unserer Website die Menschen besonders
       interessieren, und mit Hilfe dieser Information unser Angebot verbessern.
       Diese werden erst nach Erteilung der Einwilligung zur Webanalyse
@@ -117,39 +105,48 @@
       Webanalyse deaktivieren. Weiter unten haben Sie auch die Möglichkeit,
       jeden Dienst einzeln zu deaktivieren.
     </p>
+    <h2>Google Analytics</h2>
+    <p>
+      Diese Website verwendet Google Analytics, einen Webanalysedienst der
+      Google Inc, 1600 Amphitheatre Parkway Mountain View, CA 94043, USA
+      („Google“). Wir haben dazu mit Google einen Vertrag zur
+      Auftragsverarbeitung abgeschlossen. Die Übermittlung der Daten in die USA
+      erfolgt auf Grundlage des Privacy Shields. Google Analytics verwendet
+      Cookies zur Speicherung von Daten über den Website-Benutzer und zur
+      Analyse der Benutzung der Website durch die Website-Benutzer. Google
+      Analytics verwendet Scripte zur Verarbeitung von Daten über den
+      Website-Benutzer. Beim Aufruf unserer Webseite stellen diese Skripte eine
+      Verbindung zu den Servern von Google her und übermitteln Daten an teils in
+      den USA befindliche Server von Google. Diese Website nutzt die Funktion
+      „Aktivierung der IP-Anonymisierung“. Dadurch wird Ihre IP-Adresse von
+      Google innerhalb von Mitgliedstaaten der Europäischen Union oder in
+      anderen Vertragsstaaten des Abkommens über den Europäischen
+      Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle
+      IP-Adresse an einen Server von Google in den USA übertragen und dort
+      gekürzt. Laut Angaben von Google wird Google die erhobenen Daten benutzen,
+      um die Nutzung der Website auszuwerten, um Reports über die
+      Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung
+      und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch
+      wird Google diese Informationen gegebenenfalls an Dritte übertragen,
+      sofern dies gesetzlich vorgeschrieben ist oder soweit Dritte diese Daten
+      im Auftrag von Google verarbeiten. Detaillierte Informationen zum Umgang
+      mit Nutzerdaten bei Google Analytics finden Sie in der
+      Datenschutzerklärung von Google bzw. von Google Analytics.
+    </p>
+    <h2>Google Analytics deaktivieren / Widerruf der Einwilligung</h2>
 
-    <h2>Facebook Pixel</h2>
     <p>
-      Diese Website verwendet Facebook Pixel, einen Webanalysedienst der
-      Facebook Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland
-      („Facebook“). Wir haben dazu mit Facebook einen Vertrag zur
-      Auftragsdatenverarbeitung abgeschlossen. Die Daten werden teilweise in die
-      USA übertragen. Die Übermittlung der Daten in die USA erfolgt auf
-      Grundlage des Privacy Shields. Beim Aufruf unserer Webseite wird über eine
-      Software eine Verbindung zu den Servern von Facebook hergestellt und Daten
-      an teils in den USA befindliche Server von Facebook übermittelt. Facebook
-      Pixel verwendet zudem Cookies zur Speicherung von Informationen über den
-      Website-Benutzer und zur Analyse der Benutzung der Website durch die
-      Website-Benutzer. Laut Angaben von Facebook wird Facebook die erhobenen
-      Daten benutzen, um die Nutzung der Website auszuwerten, um Reports über
-      die Websiteaktivitäten zusammenzustellen und um weitere mit der
-      Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu
-      erbringen. Auch wird Facebook diese Informationen gegebenenfalls an Dritte
-      übertragen, sofern dies gesetzlich vorgeschrieben ist oder soweit Dritte
-      diese Daten im Auftrag von Facebook verarbeiten. Detaillierte
-      Informationen zum Umgang mit Nutzerdaten bei Facebook finden Sie in der
-      Datenschutzerklärung von Facebook.
-    </p>
-    <h2>Facebook Pixel deaktivieren / Widerruf der Einwilligung</h2>
-    <p>
-      Unsere Website ist so konfiguriert, dass Facebook Pixel erst nach
+      Unsere Website ist so konfiguriert, dass Google Analytics erst nach
       Erteilung der Einwilligung zur Webanalyse gestartet wird. Sie können eine
-      bereits erteilte Einwilligung zur Erfassung Ihrer Nutzerdaten durch
-      Facebook Pixel widerrufen, indem Sie auf folgenden Link klicken. Es wird
-      ein Opt-Out-Cookie gesetzt, das die Erfassung Ihrer Daten bei weiteren
-      Besuchen dieser Website verhindert: <span class="clickable blue-t" @click="removeCookies">Widerruf der Einwilligung</span>
+      bereits erteilte Einwilligung zur Erfassung Ihrer Nutzerdaten durch Google
+      Analytics widerrufen, indem Sie auf folgenden Link klicken. Es wird ein
+      Opt-Out-Cookie gesetzt, das die Erfassung Ihrer Daten bei weiteren
+      Besuchen dieser Website verhindert:
+      <span class="clickable blue-t" @click="removeCookies"
+        >Widerruf der Einwilligung</span
+      >
     </p>
--->
+    -->
     <h2>Ihre Rechte</h2>
     <p>
       Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die
@@ -157,8 +154,7 @@
       Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass
       die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre
       datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden
-      sind, können Sie sich bei uns oder der
-      Datenschutzbehörde beschweren.
+      sind, können Sie sich bei uns oder der Datenschutzbehörde beschweren.
     </p>
 
     <p>
@@ -178,43 +174,44 @@ export default {
   data() {
     return {};
   },
-  mounted(){
-    window.scrollTo(0, 0)
+  mounted() {
+    window.scrollTo(0, 0);
   },
   components: {},
   computed: {},
   watch: {},
   methods: {
-    removeCookies(){
-      this.$store.dispatch("setCookieConsent", false)
-    }
+    removeCookies() {
+      this.$store.dispatch("setCookieConsent", false);
+    },
   },
 };
 </script>
 <style scoped>
-
-#dataprotection{
-    padding: 1em;
-    padding-top: 10em;
+#dataprotection {
+  padding: 1em;
+  padding-top: 10em;
 }
 
-p, ul, h1{
-    padding-bottom: 2em;
+p,
+ul,
+h1 {
+  padding-bottom: 2em;
 }
 
-li{
-    margin-left: 2em;
+li {
+  margin-left: 2em;
 }
 @media screen and (max-width: 1100px) {
-.margin-0{
+  .margin-0 {
     margin: 0px;
-  padding: 1em;
-  max-width: calc( 100% - 2em);
-}
+    padding: 1em;
+    max-width: calc(100% - 2em);
+  }
 }
 @media screen and (max-width: 450px) {
-h1{
-  font-size: 1.5em;
-}
+  h1 {
+    font-size: 1.5em;
+  }
 }
 </style>
