@@ -29,6 +29,12 @@ const cookieArray = {
     },
   ],
   nonessential: [
+    {
+      name: "Google Analytics",
+      description: "Google Analytics wird verwendet, um Nutzer auf Webseiten zu folgen. Die Absicht ist, Anzeigen auszuspielen, die relevant und ansprechend für den einzelnen Benutzer sind und daher wertvoller für Publisher und werbetreibende Drittparteien sind. ",
+      expiry: "12m",
+      allowed: true,
+    },
   ],
 }
 
@@ -103,8 +109,8 @@ export const store = createStore({
       signingin(obj.email, obj.password)
         .then((user) => {
           state.user = user;
-          logEvent(state.analytics, "login");
-          console.log(state.user);
+          
+          // console.log(state.user);
         })
 
     },

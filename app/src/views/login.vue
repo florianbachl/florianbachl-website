@@ -53,6 +53,7 @@ export default {
   methods: {
     async signIn() {
       this.$store.dispatch("signIn", this.loginObj);
+      this.$gtag.event('login', { method: 'Google' })
     },
   },
 };

@@ -7,10 +7,14 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import VueGtag from "vue-gtag";
 
 const app = createApp(App)
 
 
+app.use(VueGtag, {
+    bootstrap: false,
+    }, router)
 app.use(store);
 app.use(AOS.init());
 app.use(router);

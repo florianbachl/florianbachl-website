@@ -13,46 +13,46 @@
           <h1>Privatsphäre-Einstellungen</h1>
           <div id="inner-cookies">
             <p>
-            Wir verwenden Cookies, die für den Betrieb unserer Webseite
-            notwendig sind und um dir Services anbieten zu können. Zusätzliche
-            Cookies werden nur verwendet, wenn du ihnen zustimmst. Diese werden
-            für statistische Zwecke genutzt und um dir individuelle Angebote
-            bzw. personalisierte Werbung zeigen zu können. Du kannst deine
-            Privatsphäre-Einstellungen jederzeit ändern.
-          </p>
-          <div id="cookie-container">
+              Wir verwenden Cookies, die für den Betrieb unserer Webseite
+              notwendig sind und um dir Services anbieten zu können. Zusätzliche
+              Cookies werden nur verwendet, wenn du ihnen zustimmst. Diese
+              werden für statistische Zwecke genutzt und um dir individuelle
+              Angebote bzw. personalisierte Werbung zeigen zu können. Du kannst
+              deine Privatsphäre-Einstellungen jederzeit ändern.
+            </p>
+            <div id="cookie-container">
               <h2>Immer aktiviert</h2>
-            <div
-              v-for="cookie in cookieArray.essential"
-              :key="cookie.name"
-              class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
-            >
-              <div class="cookie-text">
-                <h3>{{ cookie.name }}</h3>
-                <p>{{ cookie.description }}</p>
+              <div
+                v-for="cookie in cookieArray.essential"
+                :key="cookie.name"
+                class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
+              >
+                <div class="cookie-text">
+                  <h3>{{ cookie.name }}</h3>
+                  <p>{{ cookie.description }}</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked disabled />
+                  <span class="slider round essential"></span>
+                </label>
               </div>
-              <label class="switch">
-                <input type="checkbox" checked disabled/>
-                <span class="slider round essential"></span>
-              </label>
-            </div>
-            <h2>Non-Essentiell</h2>
-            <span v-if="cookieArray.nonessential.length < 1">keine</span>
-            <div
-              v-for="cookie in cookieArray.nonessential"
-              :key="cookie.name"
-              class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
-            >
-              <div class="cookie-text">
-                <h3>{{ cookie.name }}</h3>
-                <p>{{ cookie.description }}</p>
+              <h2>Non-Essentiell</h2>
+              <span v-if="cookieArray.nonessential.length < 1">keine</span>
+              <div
+                v-for="cookie in cookieArray.nonessential"
+                :key="cookie.name"
+                class="cookie fb fb-fd-r fb-ai-fs fb-jc-sb"
+              >
+                <div class="cookie-text">
+                  <h3>{{ cookie.name }}</h3>
+                  <p>{{ cookie.description }}</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" v-model="cookie.allowed" />
+                  <span class="slider round"></span>
+                </label>
               </div>
-              <label class="switch">
-                <input type="checkbox" v-model="cookie.allowed"/>
-                <span class="slider round"></span>
-              </label>
             </div>
-          </div>
           </div>
         </span>
 
@@ -82,6 +82,8 @@
 
 <script>
 import { useCookies } from "vue3-cookies";
+import { bootstrap } from "vue-gtag";
+import { setOptions } from "vue-gtag";
 
 export default {
   setup() {
@@ -112,55 +114,78 @@ export default {
     },
   },
   methods: {
+    async enablePlugin () {
+      await setOptions({
+        config: { 
+            id: "G-D5X5YMHRWG", 
+        },
+      })
+      await bootstrap().then((gtag) => {
+        console.log(gtag)
+      })
+    },
     async removeCookies() {
       for (let i in this.cookieArray.essential) {
         this.cookies.remove(this.cookieArray.essential[i].name);
       }
       for (let j in this.cookieArray.nonessential) {
-        this.cookies.remove(this.cookieArray.nonessential[j].name);
+        if (this.cookieArray.nonessential[j].name == "Google Analytics") {
+          console.log("I am in rejecting Google");
+        } else {
+          this.cookies.remove(this.cookieArray.nonessential[j].name);
+        }
       }
 
       this.$store.dispatch("resetCookies");
-      this.expanded = true;
+      window.location.reload()
     },
     async accept() {
-      for (let i in this.cookieArray.essential) {
-        this.cookies.set(
-          this.cookieArray.essential[i].name,
-          this.cookieArray.essential[i].value,
-          this.cookieArray.essential[i].expiry
-        );
-      }
       for (let j in this.cookieArray.nonessential) {
         if (this.cookieArray.nonessential[j].allowed) {
-          this.cookies.set(
-            this.cookieArray.nonessential[j].name,
-            this.cookieArray.nonessential[j].value,
-            this.cookieArray.nonessential[j].expiry
-          );
-        } else if (this.cookies.isKey(this.cookieArray.nonessential[j].name)) {
-          this.cookies.remove(this.cookieArray.nonessential[j].name);
+          if (this.cookieArray.nonessential[j].name == "Google Analytics") {
+            this.enablePlugin()
+            console.log("I am in accepting Google");
+          } else {
+            this.cookies.set(
+              this.cookieArray.nonessential[j].name,
+              this.cookieArray.nonessential[j].value,
+              this.cookieArray.nonessential[j].expiry
+            );
+          }
         }
       }
       this.$store.dispatch("setCookieConsent", true);
     },
     async initCookies() {
-      let hasEssentials = true;
+      let firsttimevisitor = false;
       for (let i in this.cookieArray.essential) {
         if (!this.cookies.isKey(this.cookieArray.essential[i].name)) {
-          hasEssentials = false;
+          firsttimevisitor = true;
+          this.cookies.set(
+            this.cookieArray.essential[i].name,
+            this.cookieArray.essential[i].value,
+            this.cookieArray.essential[i].expiry
+          );
         }
       }
-      for (let j in this.cookieArray.nonessential) {
-        if (this.cookies.isKey(this.cookieArray.nonessential[j].name)) {
-          if (!hasEssentials) {
-            this.cookies.remove(this.cookieArray.nonessential[j].name);
+      if (!firsttimevisitor) {
+        for (let j in this.cookieArray.nonessential) {
+          if(this.cookieArray.nonessential[j].name == "Google Analytics"){
+            if(!this.cookies.isKey("_ga_D5X5YMHRWG") || !this.cookies.isKey("_ga")){
+              this.cookieArray.nonessential[j].allowed = false;
+            }else{
+              this.enablePlugin()
+            }
+          }else if (!this.cookies.isKey(this.cookieArray.nonessential[j].name)) {
+            this.cookieArray.nonessential[j].allowed = false;
           }
-        } else if (hasEssentials) {
-          this.cookieArray.nonessential[j].allowed = false;
         }
+      }else{
+        this.cookies.remove("_ga");
+        this.cookies.remove("_ga_D5X5YMHRWG");
       }
-      this.$store.dispatch("setCookieConsent", hasEssentials);
+
+      this.$store.dispatch("setCookieConsent", !firsttimevisitor);
     },
   },
   created() {
@@ -190,19 +215,17 @@ h2 {
   margin-top: 1em;
 }
 
-#inner-cookies{
+#inner-cookies {
   overflow-y: scroll;
   max-height: 20em;
   padding-right: 1em;
 }
-
 
 #inner-cookies::-webkit-scrollbar {
   width: 5px;
   height: 8px;
   background-color: #f5f9fc; /* or add it to the track */
   border-radius: 10px;
-  
 }
 
 /* Add a thumb */
@@ -223,7 +246,6 @@ h2 {
   margin: 2em;
   z-index: 10000;
   max-width: calc(100% - 8em);
-  
 }
 .material-icons {
   float: right;
@@ -347,8 +369,8 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.cookie-text{
-  max-width: calc( 100% - 30px);
+.cookie-text {
+  max-width: calc(100% - 30px);
 }
 
 @media screen and (max-width: 768px) {
@@ -363,14 +385,14 @@ input:checked + .slider:before {
   #cookie-bar .fb-fd-r {
     flex-direction: column;
   }
-#inner-cookies{
-  max-height: 22em;
-}
+  #inner-cookies {
+    max-height: 22em;
+  }
 
   #cookie-popup {
     width: calc(100% - 4em);
-    top: calc( 50% - 2em );
-   padding: 1em;
+    top: calc(50% - 2em);
+    padding: 1em;
   }
 
   #cookie-bar .pb,
