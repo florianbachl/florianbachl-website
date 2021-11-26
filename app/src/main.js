@@ -14,10 +14,7 @@ const app = createApp(App)
 
 app.use(VueGtag, {
     bootstrap: false,
-    config: { 
-        id: "G-D5X5YMHRWG" 
-        }
-    })
+    }, router)
 app.use(store);
 app.use(AOS.init());
 app.use(router);

@@ -2,49 +2,45 @@
   <div id="dataprotection" class="margin-0">
     <h1>Erklärung zur Informationspflicht (Datenschutzerklärung)</h1>
     <p>
-      Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir
-      verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen
-      Bestimmungen (DSGVO, TKG 2003). In diesen Datenschutzinformationen
-      informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im
-      Rahmen unserer Website.
+      Um Ihre persönlichen Daten zu schützen, werden Infromationen ausschließlich 
+      aufgrund der gesetzlichen Bestimmungen (DSGVO, TKG 2003) verarbeitet. Lesen Sie
+      hier die wichtigsten Aspekte der Datenverarbeitung auf dieser Website.
     </p>
     <h2>Kontakt mit uns</h2>
     <p>
-      Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit uns
-      aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage
-      und für den Fall von Anschlussfragen sechs Monate bei uns gespeichert.
+      Eine über das Formular auf der Website oder per Email eingereichte Anfrage
+      wird samt ihren eingegebenen Daten für Anschlussfragen sechs Monate gespeichert.
       Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
     </p>
     <h2>Server-Log-Files</h2>
     <p>
       Der Provider der Seiten erhebt und speichert automatisch Informationen in
       so genannten Server-Log Files, die Ihr Browser automatisch an uns
-      übermittelt. Dies sind:
+      übermittelt. Diese sind:
     </p>
     <ul>
+      <li>Hostname des zugreifenden Rechners</li>
+      <li>Uhrzeit der Serveranfrage</li>
       <li>Browsertyp und Browserversion</li>
       <li>verwendetes Betriebssystem</li>
       <li>Referrer URL</li>
-      <li>Hostname des zugreifenden Rechners</li>
-      <li>Uhrzeit der Serveranfrage</li>
     </ul>
 
     <p>
-      Diese Daten sind nicht bestimmten Personen zuordenbar. Eine
-      Zusammenführung dieser Daten mit anderen Datenquellen wird nicht
-      vorgenommen. Wir behalten uns vor, diese Daten nachträglich zu prüfen,
-      wenn uns konkrete Anhaltspunkte für eine rechtswidrige Nutzung bekannt
-      werden.
+      Diese Daten sind anonymisiert und werden nicht mit anderen Datenquellen
+      zusammengeführt. Wenn wir konkrete Anhaltspunkte für eine rechtswiedrige Nutzung
+      haben, behalten wir uns vor, diese Daten nachträglich zu überprüfen.
     </p>
     <h2>Services</h2>
     <p>
-      Zum Betrieb unserer Website verwenden wir in folgenden Bereichen Services
+      Für die einwandfreie Funktion dieser Website verwenden wir in folgenden Bereichen
+      Services
       von Drittanbietern:
     </p>
 
     <ul>
       <li>
-        Webhosting (com)zur Speicherung von Daten, zur Ausführung der Website
+        Webhosting (Google Hosting) zur Speicherung von Daten, zur Ausführung der Website
       </li>
       <li>
         Webanalyse (Google Analytics) zur statistischen Auswertung der Nutzung
@@ -53,7 +49,7 @@
     </ul>
     <h2>Skripte</h2>
     <p>
-      Ein Skript ist eine Software, welche Funktionen zur Verfügung stellt,
+      Ein Skript ist eine Datei mit Befehlen, welche Funktionen zur Verfügung stellt,
       Daten verarbeitet und unsere Website an die Services von Drittanbietern
       wie z.B. die Webanalyse-Produkte Google Analytics anbindet. Zum Betrieb
       unserer Website verwenden wir Skripte von folgenden Drittanbietern:
@@ -63,18 +59,18 @@
     </ul>
 
     <p>
-      Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
-      werden diese erst nach Einwilligung gestartet
+      Da diese Website auch ohne diese Skripte einwandfrei funktioniert,
+      werden diese erst nach Einwilligung gestartet.
     </p>
 
     <h2>Cookies</h2>
     <p>
-      Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um
-      kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt
-      werden. Sie richten keinen Schaden an. Wir nutzen Cookies dazu, unser
-      Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem
-      Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns, Ihren
-      Browser beim nächsten Besuch wiederzuerkennen. Wenn Sie dies nicht
+      Wir verwenden Cookies. EIn Cookie ist eine kleine Textdatei, die im Browser 
+      ihres Endgerätes gespeichert werden. Sie sind nicht schadhaft und haben lediglich
+      die Aufgabe, die Nutzererfahrung reibungsloser zu gestalten. Manche Cookies haben 
+      Ablaufdaten, und andere bleiben auf dem Gerät gespeichert, bis sie gelöscht werden.
+      Eine Funktion, die Cookies erfüllen ist es, das Gerät beim nächsten Besuch wieder zu erkennen.
+      Wenn Sie dies nicht
       wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das
       Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Bei
       der Deaktivierung von Cookies kann die Funktionalität unserer Website
@@ -86,32 +82,32 @@
     </ul>
 
     <p>
-      Da diese Skripte zur richtigen Funktion der Website nicht notwendig sind,
+     Da diese Website auch ohne diese Skripte einwandfrei funktioniert,
       werden diese erst nach Einwilligung gestartet.
     </p>
 
     <h2>WEBANALYSE</h2>
     <p>
-      Zur Weiterentwicklung unserer Website führen wir eine statistische
+      Um die Nutzererfahrung optimal zu gestalten und die Website stetig zu optimieren,
+       führen wir eine statistische
       Auswertung der Benutzung unserer Website mit Hilfe des
-      Webanalyse-Produktes Google Analytics durch. So können wir beispielsweise
-      erkennen, welche Inhalte unserer Website die Menschen besonders
-      interessieren, und mit Hilfe dieser Information unser Angebot verbessern.
-      Diese werden erst nach Erteilung der Einwilligung zur Webanalyse
-      gestartet. Sie können eine bereits erteilte Einwilligung zur Erfassung
+      Webanalyse-Produktes Google Analytics durch. Das Produkt hilft uns zum Beispiel dabei zu erkennen,
+      welche Inhalte für Benutzer besonders relevant sind. Diese Skripte werden erst nach Einwilligung durch den Nutzer gestartet.
+      Sie können eine bereits erteilte Einwilligung zur Erfassung
       Ihrer Nutzerdaten zur Webanalyse vollständig widerrufen, indem Sie auf den
       folgenden Link klicken. Es wird ein Opt-Out-Cookie gesetzt, das die
-      Erfassung Ihrer Daten bei weiteren Besuchen dieser Website verhindert:
-      Webanalyse deaktivieren. Weiter unten haben Sie auch die Möglichkeit,
-      jeden Dienst einzeln zu deaktivieren.
+      Erfassung Ihrer Daten bei weiteren Besuchen dieser Website verhindert:  
+      <span class="clickable blue-t" @click="removeCookies"
+        > Widerruf der Einwilligung</span
+      >
     </p>
     <h2>Google Analytics</h2>
     <p>
-      Diese Website verwendet Google Analytics, einen Webanalysedienst der
-      Google Inc, 1600 Amphitheatre Parkway Mountain View, CA 94043, USA
+      Zum Zweck der Webanalyse verwendet diese Website Google Analytics 
+      von Google Inc, 1600 Amphitheatre Parkway Mountain View, CA 94043, USA
       („Google“). Wir haben dazu mit Google einen Vertrag zur
       Auftragsverarbeitung abgeschlossen. Die Übermittlung der Daten in die USA
-      erfolgt auf Grundlage des Privacy Shields. Google Analytics verwendet
+      erfolgt auf Grundlage der Standardklauseln. Google Analytics verwendet
       Cookies zur Speicherung von Daten über den Website-Benutzer und zur
       Analyse der Benutzung der Website durch die Website-Benutzer. Google
       Analytics verwendet Scripte zur Verarbeitung von Daten über den
@@ -136,30 +132,24 @@
     <h2>Google Analytics deaktivieren / Widerruf der Einwilligung</h2>
 
     <p>
-      Unsere Website ist so konfiguriert, dass Google Analytics erst nach
-      Erteilung der Einwilligung zur Webanalyse gestartet wird. Sie können eine
-      bereits erteilte Einwilligung zur Erfassung Ihrer Nutzerdaten durch Google
-      Analytics widerrufen, indem Sie auf folgenden Link klicken. Es wird ein
-      Opt-Out-Cookie gesetzt, das die Erfassung Ihrer Daten bei weiteren
-      Besuchen dieser Website verhindert:
+      Google Analytics startet erst nach ihrer Einwilligung zur Webanalyse. 
+      Hier können Sie eine bereits erteilte Einwilligung wiederrufen. Es werden alle Cookies gelöscht:
       <span class="clickable blue-t" @click="removeCookies"
         >Widerruf der Einwilligung</span
       >
     </p>
-    -->
     <h2>Ihre Rechte</h2>
     <p>
-      Ihnen stehen bezüglich Ihrer bei uns gespeicherten Daten grundsätzlich die
-      Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung,
-      Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass
+      Bezüglich der Datenspeicherung haben Sie die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung,
+      Datenübertragbarkeit, Widerruf und Widerspruch. Wenn Sie der Ansicht sind, dass
       die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre
       datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden
-      sind, können Sie sich bei uns oder der Datenschutzbehörde beschweren.
+      sind, können Sie sich bei uns oder der Datenschutzbehörde Beschwerde einreichen.
     </p>
 
     <p>
-      Sie erreichen uns unter folgenden Kontaktdaten: Florian Bachl Social Media
-      Marketing und Webdesign<br />
+      Kontaktieren Sie uns:<br>
+      Florian Bachl Software & Webdesign <br />
 
       hello@florianbachl.at<br />
 

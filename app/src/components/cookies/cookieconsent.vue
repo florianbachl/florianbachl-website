@@ -83,6 +83,7 @@
 <script>
 import { useCookies } from "vue3-cookies";
 import { bootstrap } from "vue-gtag";
+import { setOptions } from "vue-gtag";
 
 export default {
   setup() {
@@ -114,7 +115,12 @@ export default {
   },
   methods: {
     async enablePlugin () {
-      bootstrap().then((gtag) => {
+      await setOptions({
+        config: { 
+            id: "G-D5X5YMHRWG", 
+        },
+      })
+      await bootstrap().then((gtag) => {
         console.log(gtag)
       })
     },
