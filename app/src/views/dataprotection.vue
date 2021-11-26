@@ -2,7 +2,7 @@
   <div id="dataprotection" class="margin-0">
     <h1>Erklärung zur Informationspflicht (Datenschutzerklärung)</h1>
     <p>
-      Um Ihre persönlichen Daten zu schützen, werden Infromationen ausschließlich 
+      Um Ihre persönlichen Daten zu schützen, werden Informationen ausschließlich 
       aufgrund der gesetzlichen Bestimmungen (DSGVO, TKG 2003) verarbeitet. Lesen Sie
       hier die wichtigsten Aspekte der Datenverarbeitung auf dieser Website.
     </p>
